@@ -3,7 +3,6 @@ $(function() {
 });
 
 function mapInit() {
-	/*
 	var latlng = new google.maps.LatLng(49.8008709, 23.985986);
 	var myOptions = {
 		zoom: 16,
@@ -13,7 +12,6 @@ function mapInit() {
 	};
 	var map = new google.maps.Map(document.getElementById("mapCanvas"), myOptions);
 	setMarkers(map, places);
-	*/
 	
 	/*Infra maps*/
 	var latlng_inf = new google.maps.LatLng(49.8008709, 23.985986);

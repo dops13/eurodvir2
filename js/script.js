@@ -89,46 +89,78 @@ $(function() {
 		*/
 		return false;
 	});
+	/*section*/
+	$('.area_map area, .b-area-label').hover(
+		function(){
+			 var area_index = $(this).attr('data-section-id');
+			 $('.b-area-hover').removeClass('active');
+			 $('.b-area-hover-'+area_index).addClass('active');
+			 $('.b-area-label').removeClass('active');
+			 $('.b-area-label-'+area_index).addClass('active');
+			 $('.b-area-tooltip').show();
+		},
+		function(){
+			 $('.b-area-hover').removeClass('active');
+			 $('.b-area-label').removeClass('active');
+			 $('.b-area-tooltip').hide();
+		}
+	);
+	$('.area_map area').hover(function(){
+		if($(this).attr('data-section-count')!='0'){
+			$('.b-area-tooltip .circle').html('<span class="num">'+$(this).attr('data-section-count')+'</span><br/>Квартир');
+		} else {
+			$('.b-area-tooltip .circle').html('усі<br/> квартири<br/> продані');
+		}
+	});
+	$('.area_map').mousemove(function(e){
+		$('.b-area-tooltip').css({'left': e.pageX-$(this).offset().left+30+'px', 'top': e.pageY-$(this).offset().top+'px'});
+	});
+	/*plans*/
+	$('.b-area-label, .area_map area').click(function(){
+		$('.flats .area').removeClass('active');
+		$('#f-plans').addClass('active');
+		
+		$('.area_menu a').removeClass('active');
+		$('.area_menu a').eq(0).addClass('active');
+		$('.area_menu a').eq(1).addClass('active');
+		
+		var section_id = $(this).attr('data-section-id');
+		$('.area_plans .plans').removeClass('active');
+		$('.area_plans .plans_'+section_id).addClass('active;');
+		return false;
+	});
 	$('.floor_items a').click(function(){
 		$(this).parent().find('a').removeClass('active');
 		$(this).addClass('active');
 		$('.floor_info .floor_number').text($(this).text());
 		return false;
 	});
-	$('.b-area-label, .area_map area').click(function(){
-		return false;
-		$('.m_flat .area').removeClass('active');
-		$('#f-flats').addClass('active');
+	$('.plans .btn').click(function(){
+		$('.flats .area').removeClass('active');
+		$('#f-detail').addClass('active');
 		
 		$('.area_menu a').removeClass('active');
 		$('.area_menu a').eq(0).addClass('active');
 		$('.area_menu a').eq(1).addClass('active');
+		$('.area_menu a').eq(2).addClass('active');
+		
 		
 		$('.area_flats').attr('data-subarea', 'p');
-		var section_id = $(this).attr('data-section-id');
-		$('.area_flats .plans').removeClass('active');
-		$('.area_flats .plans_'+section_id).addClass('active;');
+		var flat_id = $(this).attr('data-flat-id');
+		$('.area_flats .flat_detail').removeClass('active');
+		$('.area_flats .flat_detail_'+flat_id).addClass('active');
+	});
+	/*plan detail*/
+	$('#plan_info .btn').click(function(){
+		$('.area_menu a').removeClass('active');
+		$('.area_menu a').eq(0).addClass('active');
+		$('.area_menu a').eq(1).addClass('active');
+		$('.area_menu a').eq(2).addClass('active');
+		$('.area_menu a').eq(3).addClass('active');
+		$('.area_flats').attr('data-subarea', 'o');
 		return false;
 	});
-	$('.plans_flat .btn').click(function(){
-		$('.m_flat .area').removeClass('active');
-		$('#f-flats').addClass('active');
-		
-		$('.area_menu a').removeClass('active');
-		$('.area_menu a').eq(2).addClass('active');
-		$('.area_active').css('left', $('.area_menu a').eq(2).position().left+'px');
-		
-		$('.area_flats').attr('data-subarea', 'd');
-		var flat_id = $(this).parent().attr('data-flat-id');
-		$('.area_flats .flat_detail').removeClass('active');
-		$('.area_flats .flat_detail_'+flat_id).addClass('active;');
-		var flat_number = $(this).parent().attr('data-flat-number');
-		$('.flat_info .flat_number').text(flat_number);
-	});
-	$('.plans_flat .btn').hover(function(){
-		var flat_number = $(this).parent().attr('data-flat-number');
-		$('.flat_info .flat_number').text(flat_number);
-	});
+	/*back*/
 	$('.area_flats').on('click', '.back', function(){
 		var back_id = $('#f-flats').attr('data-subarea');
 		if(back_id=='d'){
@@ -150,47 +182,9 @@ $(function() {
 			$('.area_menu a').eq(0).addClass('active');
 			$('.area_active').css('left', $('.area_menu a').eq(0).position().left+'px');
 		}
-		
 		return false;
 	});
-	$('.flat_detail .btn').hover(
-		function(){
-			 var plan_icon_id = $(this).attr('data-plan-icon-id');
-			 $(this).closest('.flat_detail').find('.item').removeClass('active');
-			 $(this).closest('.flat_detail').find('.item_'+plan_icon_id).addClass('active');
-		},
-		function(){
-			 $(this).closest('.flat_detail').find('.item').removeClass('active');
-		}
-	);
-	
-	$('.area_map area, .b-area-label').hover(
-		function(){
-			 var area_index = $(this).attr('data-section-id');
-			 $('.b-area-hover').removeClass('active');
-			 $('.b-area-hover-'+area_index).addClass('active');
-			 $('.b-area-label').removeClass('active');
-			 $('.b-area-label-'+area_index).addClass('active');
-			 $('.b-area-tooltip').show();
-		},
-		function(){
-			 $('.b-area-hover').removeClass('active');
-			 $('.b-area-label').removeClass('active');
-			 $('.b-area-tooltip').hide();
-		}
-	);
-	
-	$('.area_map area').hover(function(){
-		if($(this).attr('data-section-count')!='0'){
-			$('.b-area-tooltip .circle').html('<span class="num">'+$(this).attr('data-section-count')+'</span><br/>Квартир');
-		} else {
-			$('.b-area-tooltip .circle').html('усі<br/> квартири<br/> продані');
-		}
-	});
-	
-	$('.area_map').mousemove(function(e){
-		$('.b-area-tooltip').css({'left': e.pageX-$(this).offset().left+30+'px', 'top': e.pageY-$(this).offset().top+'px'});
-	});
+
 	
 	/*map menu*/
 	$('.infra_menu a').click(function(){
@@ -204,36 +198,28 @@ $(function() {
 	
 	//menu popup
 	$('.menu-btn').click(function(){
-		return false;
 		if($(this).hasClass('active')) {
-			$(this).css({'right': '0px'});
 			$(this).removeClass('active');
-			setTimeout(function(){
+			$('#popup_menu').animate({'right': '-500px'}, 500, function(){
 				$('#overlay_menu').fadeOut(250, function(){
 					$('body').removeClass('p_open');
 				});
-			}, 500);
-			$('#popup_menu').removeClass('open');
+			});
 		} else {
-			var brp = 0;
-			brp = 30 - (width-1100)/2;
-			$(this).css({'right': brp+'px'});
 			$(this).addClass('active');
 			$('body').addClass('p_open');
-			$('#overlay_menu').fadeIn(250);
-			$('#popup_menu').addClass('open');
+			$('#overlay_menu').fadeIn(250, function(){
+				$('#popup_menu').animate({'right': '0px'}, 500);
+			});
 		}
 		return false;
 	});
-	$('#overlay_menu').click(function(){
+	$('#overlay_menu, #popup_menu .close').click(function(){
 		$('.menu-btn').click();
 	});
-	$('.pop_menu a').click(function(){
+	$('.popup_menu li a').click(function(){
 		var scr_href = $(this).attr('href');
-		var scr_top = 0;
-		if(scr_href!='#s-main'){
-			scr_top = $(scr_href).find('.title').offset().top-100;
-		}
+		var scr_top = $(scr_href).offset().top-100;
 		$('html, body').animate({scrollTop: scr_top}, 500);
 		setTimeout(function(){
 			$('.menu-btn').click();
@@ -244,33 +230,46 @@ $(function() {
 	//map popup
 	$('.map-btn').click(function(){
 		$('body').addClass('p_open');
-		$('#overlay_map').fadeIn(250);
-		$('#popup_map').addClass('open');
+		$('#overlay_map').fadeIn(250, function(){
+			$('#popup_map').animate({'right': '0px'}, 500);
+		});
 		return false;
 	});
 	$('#overlay_map, #popup_map .close').click(function(){
-		setTimeout(function(){
+		$('#popup_map').animate({'right': '-720px'}, 500, function(){
 			$('#overlay_map').fadeOut(250, function(){
 				$('body').removeClass('p_open');
 			});
-		}, 500);
-		$('#popup_map').removeClass('open');
+		});
 	});
 	
-	//order popup
-	$('.order-btn').click(function(){
-		$('body').addClass('p_open');
-		$('#overlay_order').fadeIn(250);
-		$('#popup_order').addClass('open');
-		return false;
-	});
-	$('#overlay_order, #popup_order .close').click(function(){
-		setTimeout(function(){
-			$('#overlay_order').fadeOut(250, function(){
+	//ask popup
+	$('.btn_ask').click(function(){
+		$('menu-btn').removeClass('active');
+		$('#popup_menu').animate({'right': '-500px'}, 500, function(){
+			$('#overlay_menu').fadeOut(250, function(){
 				$('body').removeClass('p_open');
 			});
-		}, 500);
-		$('#popup_order').removeClass('open');
+		});
+		$('#popup_map').animate({'right': '-720px'}, 500, function(){
+			$('#overlay_map').fadeOut(250, function(){
+				$('body').removeClass('p_open');
+			});
+		});
+		
+		$('body').addClass('p_open');
+		$('#overlay_ask').fadeIn(250, function(){
+			$('#popup_ask').animate({'right': '0px'}, 500);
+		});
+		return false;
+	});
+	$('#overlay_ask, #popup_ask .close').click(function(){
+		$('#popup_ask').animate({'right': '-700px'}, 500, function(){
+			$('#overlay_ask').fadeOut(250, function(){
+				$('body').removeClass('p_open');
+			});
+		});
+		
 	});
 		
 	//thanks close popup
