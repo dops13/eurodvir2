@@ -15,6 +15,7 @@
 	<!-- BEGIN CSS STYLES -->
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="css/magnific-popup.css" />
 	<link rel="stylesheet" href="css/jquery.formstyler.css">
 	<link rel="stylesheet" href="css/ie.css">
 	<link rel="stylesheet" href="css/responsive.css">
@@ -65,7 +66,7 @@
 				<a href="#">eurodvir</a>
 				<span class="adr">г. Чернигов, ул. Масаны, 1</span>
 			</div>
-			<a href="#" class="logo-center">idea<span>2</span></a>
+			<a href="index.html" class="logo-center">idea</a>
 			<div class="menu-btn">
 				<span class="lt"></span>
 				<span class="lm"></span>
@@ -200,7 +201,7 @@
 										<h3>Дизайн</h3>
 										<p>Мы предлагаем вам стать частью нашей агентской команды и делать жизнь своих клиентов комфортнее и лучше: новый взгляд, новые идеи, новые технологии — это основа smart-подхода, который позволяет создавать невероятно удобное и функциональное жилье, учитывающее потребности и образ жизни современного человека.</p>
 										<div class="bts">
-											<a href="#" class="btn">Посмотреть дизайн</a>
+											<a href="#" class="btn choose_btn">Посмотреть планировки</a>
 										</div>
 									</div>
 								</div>
@@ -284,7 +285,7 @@
 										<h3>Планировка</h3>
 										<p>Мы предлагаем вам стать частью нашей агентской команды и делать жизнь своих клиентов комфортнее и лучше: новый взгляд, новые идеи, новые технологии — это основа smart-подхода, который позволяет создавать невероятно удобное и функциональное жилье, учитывающее потребности и образ жизни современного человека.</p>
 										<div class="bts">
-											<a href="#" class="btn">Посмотреть планировки</a>
+											<a href="#" class="btn choose_btn">Посмотреть планировки</a>
 										</div>
 									</div>
 								</div>
@@ -357,7 +358,7 @@
 										<h3>Местонахождения</h3>
 										<p>Мы предлагаем вам стать частью нашей агентской команды и делать жизнь своих клиентов комфортнее и лучше: новый взгляд, новые идеи, новые технологии — это основа smart-подхода, который позволяет создавать невероятно удобное и функциональное жилье, учитывающее потребности и образ жизни современного человека.</p>
 										<div class="bts">
-											<a href="#" class="btn">Посмотреть планировки</a>
+											<a href="#" class="btn choose_btn">Посмотреть планировки</a>
 										</div>
 									</div>
 								</div>
@@ -457,7 +458,7 @@
 										<h3>Природа</h3>
 										<p>Мы предлагаем вам стать частью нашей агентской команды и делать жизнь своих клиентов комфортнее и лучше: новый взгляд, новые идеи, новые технологии — это основа smart-подхода, который позволяет создавать невероятно удобное и функциональное жилье, учитывающее потребности и образ жизни современного человека.</p>
 										<div class="bts">
-											<a href="#" class="btn">Посмотреть планировки</a>
+											<a href="#" class="btn choose_btn">Посмотреть планировки</a>
 										</div>
 									</div>
 								</div>
@@ -528,7 +529,7 @@
 										<h3>Подход</h3>
 										<p>Мы предлагаем вам стать частью нашей агентской команды и делать жизнь своих клиентов комфортнее и лучше: новый взгляд, новые идеи, новые технологии — это основа smart-подхода, который позволяет создавать невероятно удобное и функциональное жилье, учитывающее потребности и образ жизни современного человека.</p>
 										<div class="bts">
-											<a href="#" class="btn">Посмотреть планировки</a>
+											<a href="#" class="btn choose_btn">Посмотреть планировки</a>
 										</div>
 									</div>
 								</div>
@@ -906,7 +907,7 @@
 						<div class="area_menu_in">
 							<a href="#f-sections" class="active"><span class="num">1</span><span class="label">Секция</span></a>
 							<a href="#f-plans"><span class="num">2</span><span class="label">Этаж</span></a>
-							<a href="#f-detail" data-subarea-link="d"><span class="num">3</span><span class="label">Квартира</span></a>
+							<a href="#f-detail" data-subarea-link="p"><span class="num">3</span><span class="label">Квартира</span></a>
 							<a href="#f-detail" data-subarea-link="o"><span class="num">4</span><span class="label">Бронирование</span></a>
 						</div>
 					</div>
@@ -941,6 +942,9 @@
 						</div>
 					</div>
 					<div class="area area_plans" id="f-plans">
+						<div class="wrap">
+							<a class="back back_to_section">Назад к выбору секции</a>
+						</div>
 						<div class="params">
 							<div class="plans_floor">
 								<a class="prev"></a>
@@ -989,6 +993,7 @@
 					</div>
 					<div class="area area_flats" data-subarea="p" id="f-detail">
 						<div class="wrap">
+							<a class="back back_to_plans" data-back-subarea="p">Назад к выбору квартиры</a>
 							<div class="flats">
 								<div class="flat_detail flat_detail_1 active">
 									<div class="lt">
@@ -1160,15 +1165,45 @@
 						<div class="fb-page" data-href="https://www.facebook.com/eurodvir.cn.ua/" data-tabs="timeline" data-width="340" data-height="424" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/eurodvir.cn.ua/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/eurodvir.cn.ua/">Європейський Двір - Чернігів</a></blockquote></div>
 					</div>
 					<div class="rt">
-						<div class="album">
-							<div class="preview">
-								<a href="#"><img src="images/gal_1_big.jpg" alt="" /></a>
+						<div class="swiper-container">	
+							<div class="swiper-wrapper">	
+								<div class="swiper-slide">	
+									<div class="album">
+										<div class="preview">
+											<a href="images/gall/gal_1.jpg"><img src="images/gall/gal_1.jpg" alt="" /></a>
+										</div>
+										<div class="gallery">
+											<a href="images/gall/gal_2.jpg"><img src="images/gall/gal_2.jpg" alt="" /></a>
+											<a href="images/gall/gal_3.jpg"><img src="images/gall/gal_3.jpg" alt="" /></a>
+										</div>
+										<div class="clr"></div>
+									</div>
+								</div>
+								<div class="swiper-slide">	
+									<div class="album">
+										<div class="preview">
+											<a href="images/gall/gal_4.jpg"><img src="images/gall/gal_4.jpg" alt="" /></a>
+										</div>
+										<div class="gallery">
+											<a href="images/gall/gal_5.jpg"><img src="images/gall/gal_5.jpg" alt="" /></a>
+											<a href="images/gall/gal_6.jpg"><img src="images/gall/gal_6.jpg" alt="" /></a>
+										</div>
+										<div class="clr"></div>
+									</div>
+								</div>
+								<div class="swiper-slide">	
+									<div class="album">
+										<div class="preview">
+											<a href="images/gall/gal_7.jpg"><img src="images/gall/gal_7.jpg" alt="" /></a>
+										</div>
+										<div class="gallery">
+											<a href="images/gall/gal_8.jpg"><img src="images/gall/gal_8.jpg" alt="" /></a>
+											<a href="images/gall/gal_9.jpg"><img src="images/gall/gal_9.jpg" alt="" /></a>
+										</div>
+										<div class="clr"></div>
+									</div>
+								</div>
 							</div>
-							<div class="gallery">
-								<a href="#"><img src="images/gal_2.jpg" alt="" /></a>
-								<a href="#"><img src="images/gal_3.jpg" alt="" /></a>
-							</div>
-							<div class="clr"></div>
 						</div>
 						<div class="bts">
 							<a href="#" class="btn btn_loadmore">Показать еще</a>
@@ -1560,6 +1595,7 @@
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="js/messages_ru.min.js"></script>
 	<script type="text/javascript" src="js/jquery.formstyler.js"></script>
+	<script src="js/magnific-popup.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 	<script type="text/javascript" src="js/contacts.js"></script>
 	<!-- END JQUERY -->

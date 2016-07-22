@@ -8,6 +8,7 @@ $(function() {
 		$('.preloader .icon').fadeOut(1000, function(){
 			$('.preloader').fadeOut(1000, function(){
 				/*css animated*/
+				/*
 				new WOW().init();
 				wow2 = new WOW(
 					{
@@ -19,12 +20,13 @@ $(function() {
 					}
 				)
 				wow2.init();
+				*/
 			});
 		});
 	}, 1000);
 	
-	/*proj carousel*/
-	var proj_swiper = new Swiper('.started-slider .swiper-container', {
+	/*main carousel*/
+	var main_swiper = new Swiper('.started-slider .swiper-container', {
 		autoplay: 3000,
 		speed: 2000,
 		slidesPerView: 1,
@@ -35,12 +37,26 @@ $(function() {
 		loop: true,
 		effect: 'fade'
     });
+
+	/*proj carousel*/
+	var news_swiper = new Swiper('.news .swiper-container', {
+		//autoplay: 3000,
+		speed: 750,
+		slidesPerView: 1,
+		//effect: 'fade',
+        spaceBetween: 0,
+		nextButton: '.news .btn_loadmore',
+        prevButton: '.about_slider .prev',
+		pagination: '.about_slider .pagination',
+		loop: true,
+    });
 	
 	/*proj carousel*/
 	var proj_swiper = new Swiper('.about_slider .swiper-container', {
 		//autoplay: 3000,
 		speed: 750,
 		slidesPerView: 1,
+		effect: 'fade',
         spaceBetween: 0,
 		nextButton: '.about_slider .next',
         prevButton: '.about_slider .prev',
@@ -67,26 +83,34 @@ $(function() {
 	/*chose flat*/
 	$('.choose_btn').click(function(){
 		$('html, body').animate({scrollTop: $('#s-flat').offset().top-72}, 500);
+		$('.b-area-label-4').click();
 		return false;
 	});
-	$('.area_menu a').click(function(){
-		/*
+	$('.area_menu a').click(function(e){
+		e.preventDefault();
+		if($(this).hasClass('active'))
 		var f_tab = $(this).attr('href');
-		$('.m_flat .area').removeClass('active');
+		$('.flats .area').removeClass('active');
 		$(f_tab).addClass('active');
-		if(f_tab=='#f-flats'){
+		if(f_tab=='#f-detail'){
 			var f_subarea = $(this).attr('data-subarea-link');
-			if(f_subarea=='d'){
-				 $('.area_flats').attr('data-subarea', 'd');
-			} else {
+			if(f_subarea=='p'){
 				 $('.area_flats').attr('data-subarea', 'p');
+			} else {
+				 $('.area_flats').attr('data-subarea', 'o');
 			}
 		}
 		
-		$('.area_menu a').removeClass('active');
+		$(this).nextAll('.active').removeClass('active');
 		$(this).addClass('active');
-		$('.area_active').css('left', $(this).position().left+'px');
-		*/
+		return false;
+	});
+	$('.area .back').click(function(){
+		$('.area_menu a.active:last').prev().click();
+		if($(this).attr('data-back-subarea')=='o') {
+			$(this).text('Назад к выбору квартиры');
+			$(this).attr('data-back-subarea', 'p');
+		}
 		return false;
 	});
 	/*section*/
@@ -109,11 +133,11 @@ $(function() {
 		if($(this).attr('data-section-count')!='0'){
 			$('.b-area-tooltip .circle').html('<span class="num">'+$(this).attr('data-section-count')+'</span><br/>Квартир');
 		} else {
-			$('.b-area-tooltip .circle').html('усі<br/> квартири<br/> продані');
+			$('.b-area-tooltip .circle').html('<span style="font-size: 11px;">планируется<br/> строительство</span>');
 		}
 	});
 	$('.area_map').mousemove(function(e){
-		$('.b-area-tooltip').css({'left': e.pageX-$(this).offset().left+30+'px', 'top': e.pageY-$(this).offset().top+'px'});
+		$('.b-area-tooltip').css({'left': e.pageX-$(this).offset().left+10+'px', 'top': e.pageY-$(this).offset().top+'px'});
 	});
 	/*plans*/
 	$('.b-area-label, .area_map area').click(function(){
@@ -158,30 +182,8 @@ $(function() {
 		$('.area_menu a').eq(2).addClass('active');
 		$('.area_menu a').eq(3).addClass('active');
 		$('.area_flats').attr('data-subarea', 'o');
-		return false;
-	});
-	/*back*/
-	$('.area_flats').on('click', '.back', function(){
-		var back_id = $('#f-flats').attr('data-subarea');
-		if(back_id=='d'){
-			$('.m_flat .area').removeClass('active');
-			$('#f-flats').addClass('active');
-		
-			$('.area_flats').attr('data-subarea', 'p');
-		
-			$('.area_menu a').removeClass('active');
-			$('.area_menu a').eq(1).addClass('active');
-			$('.area_active').css('left', $('.area_menu a').eq(1).position().left+'px');
-		} else {
-			$('.m_flat .area').removeClass('active');
-			$('#f-sections').addClass('active');
-			
-			$('.area_flats').attr('data-subarea', 'p');
-			
-			$('.area_menu a').removeClass('active');
-			$('.area_menu a').eq(0).addClass('active');
-			$('.area_active').css('left', $('.area_menu a').eq(0).position().left+'px');
-		}
+		$('.back_to_plans').text('Назад к информации');
+		$('.back_to_plans').attr('data-back-subarea', 'o');
 		return false;
 	});
 
@@ -190,6 +192,9 @@ $(function() {
 	$('.infra_menu a').click(function(){
 		$(this).parent().find('a').removeClass('active');
 		$(this).addClass('active');
+		var map_tab = $(this).attr('href');
+		$('.infra_tab').removeClass('active');
+		$(map_tab).addClass('active');
 		return false;
 	});
 	
@@ -351,6 +356,32 @@ $(function() {
 			 $('.fline-g').removeClass('active');
 			 $('.fline-g').css({'height': $(window).scrollTop()+half-ffgroup});
 		 }
+	});
+	
+		/* Gallery */
+	$('.album').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		tLoading: 'Loading image #%curr%...',
+		mainClass: 'mfp-img-mobile',
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+		},
+		callbacks: {
+			buildControls: function() {
+			  // re-appends controls inside the main container
+			  this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
+			}
+		},
+		image: {
+			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+		}
+	});
+	$('.news .btn_viewall').click(function(){
+		$('.album a:first').click();
+		return false;
 	});
 	
 	// Phone Mask

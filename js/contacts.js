@@ -3,7 +3,7 @@ $(function() {
 });
 
 function mapInit() {
-	var latlng = new google.maps.LatLng(49.8008709, 23.985986);
+	var latlng = new google.maps.LatLng(51.520865, 31.241011);
 	var myOptions = {
 		zoom: 16,
 		scrollwheel: false,
@@ -14,7 +14,7 @@ function mapInit() {
 	setMarkers(map, places);
 	
 	/*Infra maps*/
-	var latlng_inf = new google.maps.LatLng(49.8008709, 23.985986);
+	var latlng_inf = new google.maps.LatLng(51.520865, 31.241011);
 	
 	var myOptionsInf = {
 		zoom: 16,
@@ -28,7 +28,7 @@ function mapInit() {
 	  strokeOpacity: 1,
 	  scale: 4
 	};
-	
+
 	/*---Infra map 1*/
 	var map_inf1 = new google.maps.Map(document.getElementById("mapCanvasInf1"), myOptionsInf);
 	var directionsServiceInf1 = new google.maps.DirectionsService();
@@ -52,8 +52,14 @@ function mapInit() {
 	var directionsServiceInf2 = new google.maps.DirectionsService();
 	var directionsDisplayInf2 = new google.maps.DirectionsRenderer({
 		polylineOptions: {
-		  strokeColor: "#f49000",
-		  strokeWeight: 6
+			icons: [{
+				icon: lineSymbol,
+				offset: '0',
+				repeat: '20px'
+			}],
+			strokeColor: "#4ab931",
+			strokeOpacity: 0,
+			strokeWeight: 4
 		}
 	});
 	setMarkers(map_inf2, places_inf2);
@@ -64,8 +70,14 @@ function mapInit() {
 	var directionsServiceInf3 = new google.maps.DirectionsService();
 	var directionsDisplayInf3 = new google.maps.DirectionsRenderer({
 		polylineOptions: {
-		  strokeColor: "#f49000",
-		  strokeWeight: 6
+			icons: [{
+				icon: lineSymbol,
+				offset: '0',
+				repeat: '20px'
+			}],
+			strokeColor: "#4ab931",
+			strokeOpacity: 0,
+			strokeWeight: 4
 		}
 	});
 	setMarkers(map_inf3, places_inf3);
@@ -76,65 +88,115 @@ function mapInit() {
 	var directionsServiceInf4 = new google.maps.DirectionsService();
 	var directionsDisplayInf4 = new google.maps.DirectionsRenderer({
 		polylineOptions: {
-		  strokeColor: "#f49000",
-		  strokeWeight: 6
+			icons: [{
+				icon: lineSymbol,
+				offset: '0',
+				repeat: '20px'
+			}],
+			strokeColor: "#4ab931",
+			strokeOpacity: 0,
+			strokeWeight: 4
 		}
 	});
 	setMarkers(map_inf4, places_inf4);
 	setDirect(map_inf4, places_inf4, directionsServiceInf4, directionsDisplayInf4, 4);
-	setTimeout(function(){map_inf4.setZoom(18);}, 2000);
 	
 	/*---Infra map 5*/
 	var map_inf5 = new google.maps.Map(document.getElementById("mapCanvasInf5"), myOptionsInf);
 	var directionsServiceInf5 = new google.maps.DirectionsService();
 	var directionsDisplayInf5 = new google.maps.DirectionsRenderer({
 		polylineOptions: {
-		  strokeColor: "#f49000",
-		  strokeWeight: 6
+			icons: [{
+				icon: lineSymbol,
+				offset: '0',
+				repeat: '20px'
+			}],
+			strokeColor: "#4ab931",
+			strokeOpacity: 0,
+			strokeWeight: 4
 		}
 	});
 	setMarkers(map_inf5, places_inf5);
 	setDirect(map_inf5, places_inf5, directionsServiceInf5, directionsDisplayInf5, 5);
-	setTimeout(function(){map_inf5.setZoom(18);}, 2000);
+	
+	setTimeout(function(){
+		/*---Infra map 6*/
+		var map_inf6 = new google.maps.Map(document.getElementById("mapCanvasInf6"), myOptionsInf);
+		var directionsServiceInf6 = new google.maps.DirectionsService();
+		var directionsDisplayInf6 = new google.maps.DirectionsRenderer({
+			polylineOptions: {
+				icons: [{
+					icon: lineSymbol,
+					offset: '0',
+					repeat: '20px'
+				}],
+				strokeColor: "#4ab931",
+				strokeOpacity: 0,
+				strokeWeight: 4
+			}
+		});
+		setMarkers(map_inf6, places_inf6);
+		setDirect(map_inf6, places_inf6, directionsServiceInf6, directionsDisplayInf6, 6);
+	}, 6000);
+	
+	setTimeout(function(){
+		/*---Infra map 7*/
+		var map_inf7 = new google.maps.Map(document.getElementById("mapCanvasInf7"), myOptionsInf);
+		var directionsServiceInf7 = new google.maps.DirectionsService();
+		var directionsDisplayInf7 = new google.maps.DirectionsRenderer({
+			polylineOptions: {
+				icons: [{
+					icon: lineSymbol,
+					offset: '0',
+					repeat: '20px'
+				}],
+				strokeColor: "#4ab931",
+				strokeOpacity: 0,
+				strokeWeight: 4
+			}
+		});
+		setMarkers(map_inf7, places_inf7);
+		setDirect(map_inf7, places_inf7, directionsServiceInf7, directionsDisplayInf7, 7);
+	}, 7000);
 }
 
 var places = [
-	['Наш офис', 49.8008709, 23.985986, 'images/marker.png', 93, 93],
+	['Наш офис', 51.520865, 31.241011, 'images/marker-a.png', 101, 101],
 ];
 
 var places_inf1 = [
-	['', 49.800873, 23.988169, 'images/marker-a.png', 101, 101],
-	['', 49.800587, 23.990985, 'images/marker-b1.png', 87, 98],
+	['', 51.520865, 31.241011, 'images/marker-a.png', 101, 101],
+	['', 51.519628, 31.245308, 'images/marker-b1.png', 87, 98],
 ];
 
 var places_inf2 = [
-	['', 49.800873, 23.988169, 'images/marker-a.png', 71, 93],
-	['', 49.801925, 23.996203, 'images/marker-b2.png', 75, 97],
+	['', 51.520865, 31.241011, 'images/marker-a.png', 101, 101],
+	['', 51.517563, 31.239939, 'images/marker-b1.png', 87, 98],
 ];
 
 var places_inf3 = [
-	['', 49.800873, 23.988169, 'images/marker-a.png', 71, 93],
-	['', 49.802182, 23.992782, 'images/marker-b3.png', 75, 97],
+	['', 51.520865, 31.241011, 'images/marker-a.png', 101, 101],
+	['', 51.520137, 31.248484, 'images/marker-b1.png', 87, 98],
 ];
 
 var places_inf4 = [
-	['', 49.800873, 23.988169, 'images/marker-a.png', 71, 93],
-	['', 49.801078, 23.988736, 'images/marker-b4.png', 75, 97],
+	['', 51.520865, 31.241011, 'images/marker-a.png', 101, 101],
+	['', 51.520108, 31.225420, 'images/marker-b1.png', 87, 98],
 ];
 
 var places_inf5 = [
-	['', 49.800873, 23.988169, 'images/marker-a.png', 71, 93],
-	['', 49.801127, 23.989015, 'images/marker-b5.png', 75, 97],
+	['', 51.520865, 31.241011, 'images/marker-a.png', 101, 101],
+	['', 51.517344, 31.235164, 'images/marker-b1.png', 87, 98],
 ];
 
 var places_inf6 = [
-	['', 49.800873, 23.988169, 'images/marker-a.png', 71, 93],
-	['', 49.801078, 23.988736, 'images/marker-b4.png', 75, 97],
+	['', 51.520865, 31.241011, 'images/marker-a.png', 101, 101],
+	['', 51.518034, 31.246059, 'images/marker-b1.png', 87, 98],
 ];
 
 var places_inf7 = [
-	['', 49.800873, 23.988169, 'images/marker-a.png', 71, 93],
-	['', 49.801127, 23.989015, 'images/marker-b5.png', 75, 97],
+	['', 51.520865, 31.241011, 'images/marker-a.png', 101, 101],
+	['', 51.516147, 31.232604, 'images/marker-b1.png', 87, 98],
 ];
  
 function setMarkers(map, locations) {
@@ -152,7 +214,7 @@ function setMarkers(map, locations) {
 			icon: image,  
 			title: locations[i][0],
 		});
-		bindInfoWindow(marker, map, locations[i][0]);
+		//bindInfoWindow(marker, map, locations[i][0]);
 	}
 	//Центрируем и масштабируем карту
 	//map.setCenter( latlngbounds.getCenter(), map.fitBounds(latlngbounds));	 
