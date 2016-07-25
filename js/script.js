@@ -75,6 +75,9 @@ $(function() {
 		if(proj_swiper.activeIndex>5){
 			sw_index = 1;
 		}
+		if(proj_swiper.activeIndex<1){
+			sw_index = 5;
+		}
 		$('.about_slider .navs .num strong').text(sw_index);
 		$('.about_menu a').removeClass('active');
 		$('.about_menu a').eq(sw_index-1).addClass('active');
