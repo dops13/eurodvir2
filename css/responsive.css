@@ -3,7 +3,43 @@
 }
 
 @media screen and (max-width: 1200px) {
+	 .wrap {width: 688px;}
 	 
+	 /*header*/
+	 header .bts {display: none;}
+	 header .choose-btn {margin-top: 14px;}
+	 header .choose-btn a {float: none; display: block;}
+	 header .choose-btn .adr {padding-left: 60px; display: block; font-size: 14px;}
+	 header .choose-btn a::before {margin-top: -14px;}
+	 
+	 /*wrapper*/
+	 .section.started .wrap {padding-left: 30px;}
+	 
+	 /*about*/
+	 .section.about .about_menu a {margin: 0;}
+	 .section.about .about_slider {padding-left: 0; padding-right: 0;}
+	 .section.about .about_item .desc {padding-bottom: 0px;}
+	 .section.about .navs {z-index: 2; top: 368px; width: 150px;}
+	 .section.about .navs .next, .section.about .navs .prev {vertical-align: middle;}
+	 .section.about .navs .num {width: 100px; margin: 0; display: inline-block; vertical-align: middle;}
+	 
+	 /*infra*/
+	 .section.infra .infra-items .infra-item .image {margin-left: 0px!important; margin-right: 0px!important; width: 45%; text-align: center;}
+	 .section.infra .infra-items .infra-item .image svg {max-width: 90%;}
+	 .section.infra .infra-items .infra-item .desc {width: 42%!important;}
+	 .section.infra .infra-items .infra-item .desc br {display: none;}
+	 
+	 /*map*/
+	 .section.map .infra_menu {margin-bottom: 0px;}
+	 .section.map .infra_menu .item {margin-bottom: 30px;}
+	 
+	 /*news*/
+	 .section.news {display: none;}
+	 .section.offices .item.lt .image {padding: 0;}
+	 .section.offices .item {padding: 0 25px;}
+	 .section.offices .item .image {text-align: center;}
+	 .section.offices .item .image svg {max-width: 80%;}
+	 .section.offices .item .name span {display: block;}
 }
 
 @media screen and (max-width: 740px) {

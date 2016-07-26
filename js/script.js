@@ -91,21 +91,21 @@ $(function() {
 	});
 	$('.area_menu a').click(function(e){
 		e.preventDefault();
-		if($(this).hasClass('active'))
-		var f_tab = $(this).attr('href');
-		$('.flats .area').removeClass('active');
-		$(f_tab).addClass('active');
-		if(f_tab=='#f-detail'){
-			var f_subarea = $(this).attr('data-subarea-link');
-			if(f_subarea=='p'){
-				 $('.area_flats').attr('data-subarea', 'p');
-			} else {
-				 $('.area_flats').attr('data-subarea', 'o');
+		if($(this).hasClass('active')){
+			var f_tab = $(this).attr('href');
+			$('.flats .area').removeClass('active');
+			$(f_tab).addClass('active');
+			if(f_tab=='#f-detail'){
+				var f_subarea = $(this).attr('data-subarea-link');
+				if(f_subarea=='p'){
+					 $('.area_flats').attr('data-subarea', 'p');
+				} else {
+					 $('.area_flats').attr('data-subarea', 'o');
+				}
 			}
+			$(this).nextAll('.active').removeClass('active');
+			$(this).addClass('active');
 		}
-		
-		$(this).nextAll('.active').removeClass('active');
-		$(this).addClass('active');
 		return false;
 	});
 	$('.area .back').click(function(){
@@ -189,6 +189,16 @@ $(function() {
 		$('.back_to_plans').attr('data-back-subarea', 'o');
 		return false;
 	});
+	$('.plan_detail .btn').hover(
+		function(){
+			 var plan_icon_id = $(this).attr('data-plan-icon-id');
+			 $(this).closest('.flat_detail').find('.item').removeClass('active');
+			 $(this).closest('.flat_detail').find('.item_'+plan_icon_id).addClass('active');
+		},
+		function(){
+			 $(this).closest('.flat_detail').find('.item').removeClass('active');
+		}
+	);
 
 	
 	/*map menu*/
