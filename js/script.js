@@ -75,9 +75,6 @@ $(function() {
 		if(proj_swiper.activeIndex>5){
 			sw_index = 1;
 		}
-		if(proj_swiper.activeIndex<1){
-			sw_index = 5;
-		}
 		$('.about_slider .navs .num strong').text(sw_index);
 		$('.about_menu a').removeClass('active');
 		$('.about_menu a').eq(sw_index-1).addClass('active');
@@ -197,6 +194,16 @@ $(function() {
 		},
 		function(){
 			 $(this).closest('.flat_detail').find('.item').removeClass('active');
+		}
+	);
+	$('.flat_info .item').hover(
+		function(){
+			var icon_ind = $(this).index()+1;
+			$(this).closest('.flat_detail').find('.plan_detail .btn').removeClass('active');
+			$(this).closest('.flat_detail').find('.plan_detail .btn[data-plan-icon-id="'+icon_ind+'"]').addClass('active');
+		},
+		function(){
+			$(this).closest('.flat_detail').find('.plan_detail .btn').removeClass('active');
 		}
 	);
 
