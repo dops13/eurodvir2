@@ -140,7 +140,8 @@ $(function() {
 		$('.b-area-tooltip').css({'left': e.pageX-$(this).offset().left+10+'px', 'top': e.pageY-$(this).offset().top+'px'});
 	});
 	/*plans*/
-	$('.b-area-label, .area_map area').click(function(){
+	$('.b-area-label').click(function(){
+		if(!$(this).hasClass('sold')) {
 		$('.flats .area').removeClass('active');
 		$('#f-plans').addClass('active');
 		
@@ -151,6 +152,11 @@ $(function() {
 		var section_id = $(this).attr('data-section-id');
 		$('.area_plans .plans').removeClass('active');
 		$('.area_plans .plans_'+section_id).addClass('active;');
+		}
+		return false;
+	});
+	$('.area_map area').click(function(){
+		$('.b-area-label-'+$(this).attr('data-section-id')).click();
 		return false;
 	});
 	$('.floor_items a').click(function(){
@@ -198,7 +204,7 @@ $(function() {
 	);
 	$('.flat_info .item').hover(
 		function(){
-			var icon_ind = $(this).index()+1;
+			var icon_ind = $(this).attr('data-plan-icon-id');
 			$(this).closest('.flat_detail').find('.plan_detail .btn').removeClass('active');
 			$(this).closest('.flat_detail').find('.plan_detail .btn[data-plan-icon-id="'+icon_ind+'"]').addClass('active');
 		},
