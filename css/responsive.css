@@ -42,6 +42,102 @@
 	 .section.offices .item .name span {display: block;}
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 720px) {
+	 .wrap {width: 280px;}
+	 .bts .btn.green, .bts .btn {font-size: 9px; height: 36px; line-height: 36px; padding: 0 25px;}
 	 
+	 /*wrapper*/
+	 .wrapper_inner {margin-top: 495px;}
+	 .section .title {font-size: 31px;}
+	 .section .title::after, .section .title::before {margin: 17px 12px 0 0;}
+	 .section .title::after {margin: 17px 0 0 12px;}
+	 .section .subtitle {font-size: 12px; margin-bottom: 20px;}
+	 
+	 /*header*/
+	 header {}
+	 header .logo-center {display: none;}
+	 header .choose-btn {margin: 0; padding: 2px 0 0 0; height: 70px; line-height: 70px;}
+	 header .choose-btn a {margin-right: 0; font-size: 18px; padding-left: 52px;}
+	 header .choose-btn a::before {transform: scale(0.8); margin-left: -5px;}
+	 header .choose-btn .adr {display: none;}
+	 header .choose-btn a::before {margin-top: -26px;}
+	 header .tel {font-size: 0px; margin: 0 5px 0 0; height: 70px; line-height: 70px;}
+	 header .tel strong {font-size: 14px;}
+	 header .menu-btn {transform: scale(0.8); margin-right: -5px;}
+	 
+	 /*main slider*/
+	 .started-slider, .section.started, .started-slider .started-img {height: 495px; text-align: center;}
+	 .section.started .wrap {padding: 0;}
+	 .section.started .htitle {padding-top: 158px; font-size: 50px; line-height: 54px; text-align: center; margin-bottom: 15px;}
+	 .section.started .hsub_title {font-size: 12px; margin-bottom: 15px;}
+	 .section.started .bts {text-align: center;}
+
+	 /*About*/
+	 .section.about .subtitle {margin-bottom: 30px;}
+	 .section.about .about_menu {display: none;}
+	 .section.about .about_slider {padding-top: 0;}
+	 .section.about .about_item .image {float: none; width: auto; margin-bottom: 20px;}
+	 .section.about .about_item .desc {margin: 0; float: none; width: auto;}
+	 .section.about .about_item .desc h3 {font-size: 21px; padding-left: 24px;}
+	 .section.about .about_item .desc p {font-size: 12px; line-height: 22px;}
+	 .section.about .about_item .desc .bts {text-align: center;}
+	 .section.about .about_item .image svg {max-width: 76%; max-height: 175px;}
+	 .section.about .navs {top: 179px; right: 0px; left: auto; width: 86px; text-align: center;}
+	 .section.about .navs .num {font-size: 14px;}
+	 .section.about .navs .num strong {font-size: 39px;}
+	 .section.about .navs .next, .section.about .navs .prev {position: absolute; transform: rotate(-90deg);}
+	 .section.about .navs .prev {left: -190px; top: -100px;}
+	 .section.about .navs .next {right: 0px; top: -100px;}
+	 
+	 /*Infra*/
+	 .section.infra {padding-top: 70px;}
+	 .section.infra .infra-items {background: #fff; position: relative; z-index: 3; padding: 0;}
+	 .section.infra .infra-items .infra-item {margin: 0 0 20px 0!important;}
+	 .section.infra .infra-items .infra-item .num {display: none;}
+	 .section.infra .infra-items .infra-item .image {height: auto!important; width: auto!important; float: none!important; margin: 0!important;}
+	 .section.infra .infra-items .infra-item.parking .image {margin-top: -20px!important;}
+	 .section.infra .infra-items .infra-item .image svg {margin: 0 0 15px 0!important;}
+	 .section.infra .infra-items .infra-item .image span {float: right; font-size: 14px; margin: 0 0 -10px 0!important;}
+	 .section.infra .infra-items .infra-item .desc {width: auto!important; margin: 0!important; float: none!important; text-align: left!important;}
+	 .section.infra .infra-items .infra-item .desc h3 {font-size: 21px; margin: -10px 0 15px 0;}
+	 .section.infra .infra-items .infra-item .desc h3:before {transform: scale(0.8); margin: -7px 0 0 -7px;}
+	 .section.infra .infra-items .infra-item .desc p {font-size: 12px; line-height: 22px;}
+	 .section.infra .infra-items .infra-item.parking .desc h3:before {left: 55px; right: auto;}
+	 .section.infra .infra-items .infra-item.komm .image span {white-space: nowrap; max-width: 85px; overflow: hidden; padding: 0;}
+	 .section.infra .infra-items .infra-item.park .desc h3:before {right: auto; left: 12px;}
+	 
+	 /*flats*/
+	 .section.flats {padding-top: 70px;}
+	 .section.flats .area_menu a {width: 70px;}
+	 .section.flats .area_menu a .num {width: 52px; height: 52px; line-height: 48px; font-size: 20px; margin-bottom: 7px;}
+	 .section.flats .area_menu a .label {font-size: 12px;}
+	 .section.flats .area_menu a .num::before {top: 19px; left: -10px; width: 8px; height: 13px; background-size: 4px 10px;}
+	 .section.flats .area_menu a .num::after {top: 19px; right: -12px; width: 8px; height: 13px; background-size: 4px 10px;}
+	 .section.flats .area_menu a.active .num::after, .section.flats .area_menu a.active .num::before {background-size: 4px 10px;}
+	 .section.flats .areas {height: 311px; margin-bottom: 20px;}
+	 .section.flats .area_sections .area_map {transform: scale(0.45); top: -195px;}
+	 
+	 /*maps*/
+	 .section.map {padding-top: 70px;}
+	 .section.map .infra_menu .item {width: 92px;}
+	 .section.map .infra_menu .item .icon {width: 62px; height: 68px; background-size: 100% 100%!important;}
+	 .section.map .infra_menu .item .icon::before {background-size: 50% 50%!important; width: 62px; height: 62px;}
+	 .section.map .infra_menu .item .label {margin-top: 7px; font-size: 12px;}
+	 .section.map .infra_menu .item:nth-child(7) {display: none;}
+	 .section.map .infra_tabs {height: 306px;}
+	 .section.map .map {height: 306px;}
+	 
+	 /*offices*/
+	 .section.offices {padding-top: 70px;}
+	 .section.offices .item.lt {width: auto; float: none; margin-bottom: 30px;}
+	 .section.offices .item.rt {width: auto; float: none;}
+	 .section.offices .item .image {height: auto!important; font-size: 0px;}
+	 .section.offices .item .name {font-size: 21px;}
+	 .section.offices .item .desc {font-size: 12px; margin-bottom: 10px;}
+	 
+	 /*footer*/
+	 .footer {font-size: 12px;}
+	 .footer .lt {width: 50%; position: absolute; top: 0px; left: 0px;}
+	 .footer .rt {width: 100%;}
+	 .footer .fb-like {display: inline-block;}
 }

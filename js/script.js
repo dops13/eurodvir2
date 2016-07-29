@@ -7,20 +7,7 @@ $(function() {
 	setTimeout(function(){
 		$('.preloader .icon').fadeOut(1000, function(){
 			$('.preloader').fadeOut(1000, function(){
-				/*css animated*/
-				/*
-				new WOW().init();
-				wow2 = new WOW(
-					{
-						boxClass:     'wow2',
-						animateClass: 'animated',
-						offset:       0,
-						mobile:       false,
-						live:         true
-					}
-				)
-				wow2.init();
-				*/
+				
 			});
 		});
 	}, 1000);
@@ -180,6 +167,23 @@ $(function() {
 		$('.area_flats .flat_detail').removeClass('active');
 		$('.area_flats .flat_detail_'+flat_id).addClass('active');
 	});
+	$('.plans_floor .prev').click(function(){
+		var floor_num = parseInt($('.plans_floor_num').text());
+		if(floor_num>1){
+			floor_num--;
+		}
+		$('.plans_floor_num').text(floor_num);
+		return false;
+	});
+	$('.plans_floor .next').click(function(){
+		var floor_num = parseInt($('.plans_floor_num').text());
+		if(floor_num<10){
+			floor_num++;
+		}
+		$('.plans_floor_num').text(floor_num);
+		return false;
+	});
+	
 	/*plan detail*/
 	$('#plan_info .btn').click(function(){
 		$('.area_menu a').removeClass('active');
