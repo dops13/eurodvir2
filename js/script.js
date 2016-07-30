@@ -166,6 +166,25 @@ $(function() {
 		var flat_id = $(this).attr('data-flat-id');
 		$('.area_flats .flat_detail').removeClass('active');
 		$('.area_flats .flat_detail_'+flat_id).addClass('active');
+		$('.flats-navs .num strong').text($('.area_flats .flat_detail_'+flat_id).index()+1);
+	});
+	$('.flats-navs .prev').click(function(){
+		var prev_flat = $('.area_flats .flat_detail.active').prev();
+		if(prev_flat.length){
+			$('.area_flats .flat_detail').removeClass('active');
+			prev_flat.addClass('active');
+			$('.flats-navs .num strong').text(prev_flat.index()+1);
+		}
+		return false;
+	});
+	$('.flats-navs .next').click(function(){
+		var next_flat = $('.area_flats .flat_detail.active').next();
+		if(next_flat.length){
+			$('.area_flats .flat_detail').removeClass('active');
+			next_flat.addClass('active');
+			$('.flats-navs .num strong').text(next_flat.index()+1);
+		}
+		return false;
 	});
 	$('.plans_floor .prev').click(function(){
 		var floor_num = parseInt($('.plans_floor_num').text());
@@ -250,14 +269,24 @@ $(function() {
 		return false;
 	});
 	$('#overlay_menu, #popup_menu .close').click(function(){
-		$('.menu-btn').click();
+		$('.menu-btn').removeClass('active');
+		$('#popup_menu').animate({'right': '-500px'}, 500, function(){
+			$('#overlay_menu').fadeOut(250, function(){
+				$('body').removeClass('p_open');
+			});
+		});
 	});
 	$('.popup_menu li a').click(function(){
 		var scr_href = $(this).attr('href');
 		var scr_top = $(scr_href).offset().top-100;
 		$('html, body').animate({scrollTop: scr_top}, 500);
 		setTimeout(function(){
-			$('.menu-btn').click();
+			$('.menu-btn').removeClass('active');
+			$('#popup_menu').animate({'right': '-500px'}, 500, function(){
+				$('#overlay_menu').fadeOut(250, function(){
+					$('body').removeClass('p_open');
+				});
+			});
 		}, 500);
 		return false;
 	});
