@@ -53,6 +53,13 @@
 	 .section.offices .item .image {text-align: center;}
 	 .section.offices .item .image svg {max-width: 80%;}
 	 .section.offices .item .name span {display: block;}
+	 
+	 /*flats*/
+	 .section.flats .areas {background: #fff;}
+	 .section.flats .area_plans .plans {    transform: scale(0.7); left: 50%; margin-left: -519px;}
+	 .section.flats .back {top: 52px; padding-left: 40px;}
+	 .section.flats .back::after {position: absolute; left: 0px; top: 2px; margin-left: 0px;}
+	 .section.flats .area_plans .plans_floor {float: right;}
 }
 
 @media screen and (max-width: 720px) {
