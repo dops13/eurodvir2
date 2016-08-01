@@ -62,6 +62,9 @@ $(function() {
 		if(proj_swiper.activeIndex>5){
 			sw_index = 1;
 		}
+		if(proj_swiper.activeIndex<1){
+			sw_index = 5;
+		}
 		$('.about_slider .navs .num strong').text(sw_index);
 		$('.about_menu a').removeClass('active');
 		$('.about_menu a').eq(sw_index-1).addClass('active');
@@ -174,12 +177,22 @@ $(function() {
 			$('.area_flats .flat_detail').removeClass('active');
 			prev_flat.addClass('active');
 			$('.flats-navs .num strong').text(prev_flat.index()+1);
+		} else {
+			prev_flat = $('.area_flats .flat_detail:last');
+			$('.area_flats .flat_detail').removeClass('active');
+			prev_flat.addClass('active');
+			$('.flats-navs .num strong').text(prev_flat.index()+1);
 		}
 		return false;
 	});
 	$('.flats-navs .next').click(function(){
 		var next_flat = $('.area_flats .flat_detail.active').next();
 		if(next_flat.length){
+			$('.area_flats .flat_detail').removeClass('active');
+			next_flat.addClass('active');
+			$('.flats-navs .num strong').text(next_flat.index()+1);
+		} else {
+			next_flat = $('.area_flats .flat_detail:first');
 			$('.area_flats .flat_detail').removeClass('active');
 			next_flat.addClass('active');
 			$('.flats-navs .num strong').text(next_flat.index()+1);
