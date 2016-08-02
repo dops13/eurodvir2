@@ -92,7 +92,6 @@ $(function() {
 			}
 			$(this).nextAll('.active').removeClass('active');
 			$(this).addClass('active');
-			window.location.hash = $(this).attr('data-hash');
 		}
 		return false;
 	});
@@ -133,17 +132,16 @@ $(function() {
 	/*plans*/
 	$('.b-area-label').click(function(){
 		if(!$(this).hasClass('sold')) {
-			$('.flats .area').removeClass('active');
-			$('#f-plans').addClass('active');
-			
-			$('.area_menu a').removeClass('active');
-			$('.area_menu a').eq(0).addClass('active');
-			$('.area_menu a').eq(1).addClass('active');
-			
-			var section_id = $(this).attr('data-section-id');
-			$('.area_plans .plans').removeClass('active');
-			$('.area_plans .plans_'+section_id).addClass('active;');
-			window.location.hash = 'plans';
+		$('.flats .area').removeClass('active');
+		$('#f-plans').addClass('active');
+		
+		$('.area_menu a').removeClass('active');
+		$('.area_menu a').eq(0).addClass('active');
+		$('.area_menu a').eq(1).addClass('active');
+		
+		var section_id = $(this).attr('data-section-id');
+		$('.area_plans .plans').removeClass('active');
+		$('.area_plans .plans_'+section_id).addClass('active;');
 		}
 		return false;
 	});
@@ -172,7 +170,6 @@ $(function() {
 		$('.area_flats .flat_detail').removeClass('active');
 		$('.area_flats .flat_detail_'+flat_id).addClass('active');
 		$('.flats-navs .num strong').text($('.area_flats .flat_detail_'+flat_id).index()+1);
-		window.location.hash = 'detail-plan';
 	});
 	$('.flats-navs .prev').click(function(){
 		var prev_flat = $('.area_flats .flat_detail.active').prev();
@@ -229,7 +226,6 @@ $(function() {
 		$('.area_flats').attr('data-subarea', 'o');
 		$('.back_to_plans').text('Назад к информации');
 		$('.back_to_plans').attr('data-back-subarea', 'o');
-		window.location.hash = 'order';
 		return false;
 	});
 	$('.plan_detail .btn').hover(
@@ -461,5 +457,5 @@ $(function() {
 	});
 	
 	// Phone Mask
-	$('input[name="phone"]').mask("+9(9999) 999-99-99");
+	$('input[name="phone"]').mask("+9(999) 999-99-99");
 });

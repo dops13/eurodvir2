@@ -128,16 +128,16 @@
 	 .section.infra .infra-items .infra-item .num {display: none;}
 	 .section.infra .infra-items .infra-item .image {height: auto!important; width: auto!important; float: none!important; margin: 0!important;}
 	 .section.infra .infra-items .infra-item.parking .image {margin-top: -20px!important;}
-	 .section.infra .infra-items .infra-item .image svg {margin: 0 0 15px 0!important; transform: scale(0.8);}
+	 .section.infra .infra-items .infra-item .image svg {margin: 0 0 15px 0!important;}
 	 .section.infra .infra-items .infra-item .image span {float: right; font-size: 14px; margin: 0 0 -10px 0!important;}
 	 .section.infra .infra-items .infra-item .desc {width: auto!important; margin: 0!important; float: none!important; text-align: left!important;}
 	 .section.infra .infra-items .infra-item .desc h3 {font-size: 21px; margin: -10px 0 15px 0;}
 	 .section.infra .infra-items .infra-item .desc h3:before {transform: scale(0.8); margin: -7px 0 0 -7px;}
 	 .section.infra .infra-items .infra-item .desc p {font-size: 13px; line-height: 22px;}
 	 .section.infra .infra-items .infra-item.parking .desc h3:before {left: 55px; right: auto;}
-	 .section.infra .infra-items .infra-item.komm .image span {white-space: nowrap; max-width: 145px; overflow: hidden; padding: 0;}
+	 .section.infra .infra-items .infra-item.komm .image span {white-space: nowrap; max-width: 85px; overflow: hidden; padding: 0;}
 	 .section.infra .infra-items .infra-item.park .desc h3:before {right: auto; left: 12px;}
-
+	 
 	 /*flats*/
 	 .section.flats {padding-top: 70px;}
 	 .section.flats .area_menu a {width: 70px;}
@@ -175,6 +175,7 @@
 	 .section.flats .area_flats .flats-navs {width: 80px; text-align: center; top: 100px; right: -18px; left: auto;}
 	 .section.flats .area_flats .flats-navs .next, .section.flats .area_flats .flats-navs .prev {transform: rotate(0deg);}
 	 .section.flats .area_flats .flats-navs .num {width: 100%; margin: 10px 0 20px;}
+	 /*.section.flats .area_flats[data-subarea="p"] .plan_tabs {min-height: 110px;}*/
 	 
 	 .section.flats .area_flats .wrap {height: auto;}
 	 .section.flats .area_flats .flat_detail.active {position: relative;}
