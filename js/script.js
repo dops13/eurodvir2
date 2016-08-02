@@ -50,7 +50,7 @@ $(function() {
 		pagination: '.about_slider .pagination',
 		loop: true,
     });
-	if(proj_swiper.length){
+	if($('.about_slider').length){
 		$('.about_menu a').click(function(){
 			 $(this).parent().find('a').removeClass('active');
 			 $(this).addClass('active');
