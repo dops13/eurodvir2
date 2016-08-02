@@ -50,25 +50,27 @@ $(function() {
 		pagination: '.about_slider .pagination',
 		loop: true,
     });
-	$('.about_menu a').click(function(){
-		 $(this).parent().find('a').removeClass('active');
-		 $(this).addClass('active');
-		 var about_index = $(this).index()+1;
-		 proj_swiper.slideTo(about_index, 750, function(){});
-		 return false;
-	});
-	proj_swiper.on('slideChangeStart', function () {
-		var sw_index = proj_swiper.activeIndex;
-		if(proj_swiper.activeIndex>5){
-			sw_index = 1;
-		}
-		if(proj_swiper.activeIndex<1){
-			sw_index = 5;
-		}
-		$('.about_slider .navs .num strong').text(sw_index);
-		$('.about_menu a').removeClass('active');
-		$('.about_menu a').eq(sw_index-1).addClass('active');
-	});
+	if(proj_swiper.length){
+		$('.about_menu a').click(function(){
+			 $(this).parent().find('a').removeClass('active');
+			 $(this).addClass('active');
+			 var about_index = $(this).index()+1;
+			 proj_swiper.slideTo(about_index, 750, function(){});
+			 return false;
+		});
+		proj_swiper.on('slideChangeStart', function () {
+			var sw_index = proj_swiper.activeIndex;
+			if(proj_swiper.activeIndex>5){
+				sw_index = 1;
+			}
+			if(proj_swiper.activeIndex<1){
+				sw_index = 5;
+			}
+			$('.about_slider .navs .num strong').text(sw_index);
+			$('.about_menu a').removeClass('active');
+			$('.about_menu a').eq(sw_index-1).addClass('active');
+		});
+	}
 	
 	/*chose flat*/
 	$('.choose_btn').click(function(){
@@ -80,26 +82,30 @@ $(function() {
 		e.preventDefault();
 		if($(this).hasClass('active')){
 			var f_tab = $(this).attr('href');
-			$('.flats .area').removeClass('active');
-			$(f_tab).addClass('active');
-			if(f_tab=='#f-detail'){
-				var f_subarea = $(this).attr('data-subarea-link');
-				if(f_subarea=='p'){
-					 $('.area_flats').attr('data-subarea', 'p');
-				} else {
-					 $('.area_flats').attr('data-subarea', 'o');
+			if(f_tab=='#f-sections'){
+				location.href = 'index.html#sections';
+			} else {
+				$('.flats .area').removeClass('active');
+				$(f_tab).addClass('active');
+				if(f_tab=='#f-detail'){
+					var f_subarea = $(this).attr('data-subarea-link');
+					if(f_subarea=='p'){
+						$('.area_flats').attr('data-subarea', 'p');
+					} else {
+						$('.area_flats').attr('data-subarea', 'o');
+					}
 				}
+				$(this).nextAll('.active').removeClass('active');
+				$(this).addClass('active');
+				window.location.hash = $(this).attr('data-hash');
 			}
-			$(this).nextAll('.active').removeClass('active');
-			$(this).addClass('active');
-			window.location.hash = $(this).attr('data-hash');
 		}
 		return false;
 	});
 	$('.area .back').click(function(){
 		$('.area_menu a.active:last').prev().click();
 		if($(this).attr('data-back-subarea')=='o') {
-			$(this).text('Назад к выбору квартиры');
+			$(this).text('Назад к выбору этажа');
 			$(this).attr('data-back-subarea', 'p');
 		}
 		return false;
@@ -133,17 +139,7 @@ $(function() {
 	/*plans*/
 	$('.b-area-label').click(function(){
 		if(!$(this).hasClass('sold')) {
-			$('.flats .area').removeClass('active');
-			$('#f-plans').addClass('active');
-			
-			$('.area_menu a').removeClass('active');
-			$('.area_menu a').eq(0).addClass('active');
-			$('.area_menu a').eq(1).addClass('active');
-			
-			var section_id = $(this).attr('data-section-id');
-			$('.area_plans .plans').removeClass('active');
-			$('.area_plans .plans_'+section_id).addClass('active;');
-			window.location.hash = 'plans';
+			location.href = 'plans.html';
 		}
 		return false;
 	});
@@ -227,7 +223,7 @@ $(function() {
 		$('.area_menu a').eq(2).addClass('active');
 		$('.area_menu a').eq(3).addClass('active');
 		$('.area_flats').attr('data-subarea', 'o');
-		$('.back_to_plans').text('Назад к информации');
+		$('.back_to_plans').text('Назад к выбору квартиры');
 		$('.back_to_plans').attr('data-back-subarea', 'o');
 		window.location.hash = 'order';
 		return false;
@@ -406,33 +402,35 @@ $(function() {
 	});
 	
 	/*v-line animate*/
-	var half = height/2;
-	var y_height = 0;
-	var start_ytop = $('.section.started .btn').offset().top+48;
-	var ffgroup = $('.about .title').offset().top;
-	$('.fline-y').css({'top': start_ytop+'px'});
-	$('.fline-g').css({'top': ffgroup+'px'});
-	$(window).scroll(function(){
-		 y_height = $(window).scrollTop()*0.75;
-		 
-		 if($(window).scrollTop()<ffgroup){
-			 $('.fline-y').css({'height': y_height});
-		 }
-		 
-		 if($(window).scrollTop()>0) {
-			 $('.started .btn .round').fadeIn(500);
-		 } else {
-			 $('.started .btn .round').fadeOut(500);
-		 }
-		 
-		 if($(window).scrollTop()>ffgroup){
-			 $('.fline-g').addClass('active');
-			 $('.fline-g').css({'height': $(window).scrollTop()+half-ffgroup});
-		 } else {
-			 $('.fline-g').removeClass('active');
-			 $('.fline-g').css({'height': $(window).scrollTop()+half-ffgroup});
-		 }
-	});
+	if($('.section.started .btn').length){
+		var half = height/2;
+		var y_height = 0;
+		var start_ytop = $('.section.started .btn').offset().top+48;
+		var ffgroup = $('.about .title').offset().top;
+		$('.fline-y').css({'top': start_ytop+'px'});
+		$('.fline-g').css({'top': ffgroup+'px'});
+		$(window).scroll(function(){
+			 y_height = $(window).scrollTop()*0.75;
+			 
+			 if($(window).scrollTop()<ffgroup){
+				 $('.fline-y').css({'height': y_height});
+			 }
+			 
+			 if($(window).scrollTop()>0) {
+				 $('.started .btn .round').fadeIn(500);
+			 } else {
+				 $('.started .btn .round').fadeOut(500);
+			 }
+			 
+			 if($(window).scrollTop()>ffgroup){
+				 $('.fline-g').addClass('active');
+				 $('.fline-g').css({'height': $(window).scrollTop()+half-ffgroup});
+			 } else {
+				 $('.fline-g').removeClass('active');
+				 $('.fline-g').css({'height': $(window).scrollTop()+half-ffgroup});
+			 }
+		});
+	}
 	
 		/* Gallery */
 	$('.album').magnificPopup({
