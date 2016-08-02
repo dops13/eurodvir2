@@ -60,6 +60,18 @@
 	 .section.flats .back {top: 52px; padding-left: 40px;}
 	 .section.flats .back::after {position: absolute; left: 0px; top: 2px; margin-left: 0px;}
 	 .section.flats .area_plans .plans_floor {float: right;}
+	 
+	 .section.flats .area_flats .flat_info {padding-top: 10px;}
+	 .section.flats .area_flats .lt {width: 50%;}
+	 .section.flats .area_flats .plan_detail {transform: scale(0.7); top: 54px; margin-top: 0px!important;}
+	 .section.flats .area_flats .flat_detail.flat_detail_11 .plan_detail, .section.flats .area_flats .flat_detail.flat_detail_7 .plan_detail {left: -72px;}
+	 .section.flats .area_flats .rt {width: 48%;}
+	 .section.flats .area_flats .rt {padding-top: 30px;}
+	 .section.flats .area_flats .flat_info .item .icon {width: 68px; height: 68px;}
+	 .section.flats .area_flats .flats-navs {top: 75%; left: 50%; margin: 0 0 0 -100px; width: 200px;}
+	 .section.flats .area_flats .flats-navs .next, .section.flats .area_flats .flats-navs .prev {transform: rotate(-90deg); vertical-align: middle;}
+	 .section.flats .area_flats .flats-navs .num {display: inline-block; vertical-align: middle; width: 120px;}
+	 .section.flats .area_flats .flat_order {width: 100%;} 
 }
 
 @media screen and (max-width: 720px) {
@@ -134,8 +146,49 @@
 	 .section.flats .area_menu a .num::before {top: 19px; left: -10px; width: 8px; height: 13px; background-size: 4px 10px;}
 	 .section.flats .area_menu a .num::after {top: 19px; right: -12px; width: 8px; height: 13px; background-size: 4px 10px;}
 	 .section.flats .area_menu a.active .num::after, .section.flats .area_menu a.active .num::before {background-size: 4px 10px;}
-	 .section.flats .areas {height: 311px; margin-bottom: 20px;}
-	 .section.flats .area_sections .area_map {transform: scale(0.45); top: -195px;}
+	 .section.flats .areas {height: auto; margin-bottom: 0px;}
+	 .section.flats .area {display: none; position: relative;}
+	 .section.flats .area.active {display: block;}
+	 .section.flats .area_sections {height: 317px;}
+	 .section.flats .area_sections .area_map {transform: scale(0.45); top: -87px;}
+	 
+	 .section.flats .area_plans {height: 580px;}
+	 .section.flats .area_plans .plans_txt {display: none;}
+	 .section.flats .area_plans .plans {transform: rotate(-90deg) scale(0.5); top: 54px;}
+	 .section.flats .area_plans .plans {margin-left: -555px;}
+	 .section.flats .area_plans .params{padding: 0;}
+	 .section.flats .area_plans .plans_floor {width: 100px; padding: 0; margin: 0; right: 0; text-align: center; top: 187px;}
+	 .section.flats .area_plans .plans_floor .next, .section.flats .area_plans .plans_floor .prev {position: relative; left: 0; top: auto; transform: rotate(90deg); margin: 0; display: inline-block;}
+	 .section.flats .area_plans .plans_floor .next {}
+	 .section.flats .area_plans .plans_floor .label {bottom: 45px;}
+	 .section.flats .area_plans .plans_floor .num {padding: 20px 0 40px 0;}
+	 .section.flats .back {top: 540px; left: 0px;}
+	 .section.flats .area_plans .plans_bts .btn {transform: rotate(90deg);}
+	 
+	 .section.flats .area_flats .flat_info .item {display: none;}
+	 .section.flats .area_flats .lt {width: auto; float: none;}
+	 .section.flats .area_flats .rt {width: auto; float: none; height: auto;}
+	 .section.flats .area_flats .plan_detail {position: relative; top: auto; left: auto; right: auto; margin: 0!important; transform: scale(0.6); transform-origin: 0 0;}
+	 .section.flats .area_flats .h_title {font-size: 31px; text-align: center; margin-bottom: 7px;}
+	 .section.flats .area_flats .h_subtitle {font-size: 13px; text-align: center; margin-bottom: 7px;}
+	 .section.flats .area_flats .flat_info .bts {text-align: center;}
+	 .section.flats .area_flats .flats-navs {width: 80px; text-align: center; top: 100px; right: -18px; left: auto;}
+	 .section.flats .area_flats .flats-navs .next, .section.flats .area_flats .flats-navs .prev {transform: rotate(0deg);}
+	 .section.flats .area_flats .flats-navs .num {width: 100%; margin: 10px 0 20px;}
+	 /*.section.flats .area_flats[data-subarea="p"] .plan_tabs {min-height: 110px;}*/
+	 
+	 .section.flats .area_flats .wrap {height: auto;}
+	 .section.flats .area_flats .flat_detail.active {position: relative;}
+	 .section.flats .area_flats[data-subarea="o"] .lt {display: none;}
+	 .section.flats[data-subarea="o"] .back {bottom: 0px; top: auto;}
+	 .section.flats .area_flats[data-subarea="o"] .rt {padding-top: 0px;}
+	 .section.flats .area_flats[data-subarea="o"] .flat_order .bts {text-align: center;}
+	 .section.flats .area_flats .plan_tabs {min-height: 0px;}
+	 .section.flats .area_flats .plan_tabs .plan_tab {position: relative; display: none;}
+	 .section.flats .area_flats .plan_tabs .plan_tab {display: none;}
+	 .section.flats .area_flats[data-subarea="p"] .plan_tabs #plan_info {display: block;}
+	 .section.flats .area_flats[data-subarea="o"] .plan_tabs #plan_order {display: block;}
+	 .section.flats .area_flats .flat_order .value input, .section.flats .area_flats .flat_order .value textarea {text-align: center;}
 	 
 	 /*maps*/
 	 .section.map {padding-top: 70px;}
