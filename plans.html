@@ -55,30 +55,68 @@
 
 <body>	
 	<!-- Wrapper -->
-	<section class="wrapper">
+	<section class="wrapper wrapper_flats">
 		<!-- Section Flats -->
 		<div class="section flats flats_one" id="s-flat">
 			<div class="f-group">
 				<div class="wrap">
-					<div class="h-group">
+					<div class="h-group" id="h-sections">
+						<div class="title">Планы квартир</div>
+						<div class="subtitle">Развитая инфраструктура в ЖК Европейский двор</div>
+					</div>
+					<div class="h-group active" id="h-plans">
 						<div class="title">Планы этажей</div>
 						<div class="subtitle">Выберите пожалуйста этаж и квартиру</div>
+					</div>
+					<div class="h-group" id="h-detail-plan">
+						<div class="title">Планы квартир</div>
+						<div class="subtitle">Выберите квартиру которая вас интерисует</div>
+					</div>
+					<div class="h-group" id="h-order">
+						<div class="title">Онлайн запись</div>
+						<div class="subtitle">Введите пожалуйста свои данные</div>
 					</div>
 					<div class="area_menu">
 						<div class="area_menu_in">
 							<a href="#f-sections" class="active" data-hash="sections"><span class="num">1</span><span class="label">Секция</span></a>
 							<a href="#f-plans" class="active" data-hash="plans"><span class="num">2</span><span class="label">Этаж</span></a>
 							<a href="#f-detail" data-subarea-link="p" data-hash="detail-plan"><span class="num">3</span><span class="label">Квартира</span></a>
-							<a href="#f-detail" data-subarea-link="o" data-hash="order"><span class="num">4</span><span class="label">Бронирование</span></a>
+							<a href="#f-detail" data-subarea-link="o" data-hash="order"><span class="num">4</span><span class="label">Просмотр</span></a>
 						</div>
 					</div>
 				</div>
 				
 				<div class="areas">
-					<div class="area area_plans active" id="f-plans">
-						<div class="wrap">
-							<a class="back back_to_section">Назад к выбору секции</a>
+					<div class="area area_sections" id="f-sections">
+						<a class="back back_to_main">Назад на Главную</a>
+						<div class="area_map">	
+							<img class="img_area" id="img-area-map" src="images/img-area-map.jpg" alt="" />
+							<img class="tr_area" id="tr-area-map" src="images/img-area-map.png" usemap="#area-map" alt="" />	
+							<map class="area_map" id="area-map" name="area-map">
+								<area id="b-map-area-1" data-section-id="1" data-section-count="0" shape="poly" coords="868,155.99999923706054,925,188.99999923706054,911,383.99999923706054,760,485.99999923706054,754,483.99999923706054,746,493.99999923706054,750,288.99999923706054,696,250.99999923706054,773,210.99999923706054,772,182.99999923706054,795,169.99999923706054,820,182.99999923706054" />
+								<area id="b-map-area-2" data-section-id="2" data-section-count="0" shape="poly" coords="692,252.99999923706054,746,291.99999923706054,741,499.99999923706054,559,627.0000030517579,555,623.0000030517579,537,628.0000030517579,483,572.0000030517579,480,366.0000030517578,578,320.0000030517578,577,288.0000030517578,604,272.0000030517578,628,288.0000030517578,641,285.0000030517578" />
+								<area id="b-map-area-3" data-section-id="3" data-section-count="0" shape="poly" coords="657,37,700,63,696,204,668,220,660,220,660,252,614,275,605,268,578,284,575,298,532,318,529,140,489,108,580,65" />
+								<area id="b-map-area-4" data-section-id="4" data-section-count="38" shape="poly" coords="484,112,526,141,528,322,336,423,295,380,284,197,393,148" />
+							</map>
+							<div class="hovers">
+								<div class="b-area-hover b-area-hover-1 sold"></div>
+								<div class="b-area-hover b-area-hover-2 sold"></div>
+								<div class="b-area-hover b-area-hover-3 sold"></div>
+								<div class="b-area-hover b-area-hover-4"></div>
+							</div>
+							<div class="labels">
+								<div class="b-area-label b-area-label-1 sold" data-section-id="1">2</div>
+								<div class="b-area-label b-area-label-2 sold" data-section-id="2">1</div>
+								<div class="b-area-label b-area-label-3 sold" data-section-id="3">4</div>
+								<div class="b-area-label b-area-label-4" data-section-id="4">3</div>
+							</div>
+							<div class="b-area-tooltip">
+								<span class="circle">усі<br/> квартири<br/> продані</span>
+							</div>
 						</div>
+					</div>
+					<div class="area area_plans active" id="f-plans">
+						<a class="back back_to_section">Назад к выбору секции</a>
 						<div class="params">
 							<div class="plans_floor">
 								<a class="prev"></a>
@@ -128,8 +166,8 @@
 						<div class="plans_txt"><span>от 7500 грн/м2, скоро повышение цены</span></div>
 					</div>
 					<div class="area area_flats" data-subarea="p" id="f-detail">
+						<a class="back back_to_plans" data-back-subarea="p">Назад к выбору квартиры</a>
 						<div class="wrap">
-							<a class="back back_to_plans" data-back-subarea="p">Назад к выбору квартиры</a>
 							<div class="flats-navs">
 								<a href="#" class="prev"></a>
 								<div class="num"><strong>1</strong>/11</div>
@@ -1137,97 +1175,8 @@
 		</div>
 	</section>
 	
-	<div class="popup_groups">
-		<!-- Popup Menu -->
-		<div class="overlay" id="overlay_menu"></div>
-		<div class="popup popup_menu" id="popup_menu">
-			<div class="popup_in">
-				<ul>
-					<li><a href="#s-about">О проекте</a></li>
-					<li><a href="#s-infra">Инфраструктура</a></li>
-					<li><a href="#s-flat">Планы квартир</a></li>
-					<li><a href="#s-map">Расположение</a></li>
-					<li><a href="#s-news">Ход строительства</a></li>
-					<li><a href="#s-offices">Контакты</a></li>
-				</ul>
-				<div class="bts">
-					<a href="#" class="btn green btn_ask">поддержка 24/7</a>
-					<div class="politic">	
-						<a href="#">Ваши данные не будут переданы третьим лицам</a>
-					</div>
-				</div>
-			</div>
-			<a class="close"></a>
-		</div>
-		
-		<!-- Popup Map -->
-		<div class="overlay" id="overlay_map"></div>
-		<div class="popup popup_map" id="popup_map">
-			<div class="popup_in">
-				<div class="h_title">г. Чернигов, ул. Любечская, 100</div>
-				<div class="h_subtitle">Наш адрес</div>
-				<div class="map" id="mapCanvas"></div>
-				<div class="bts">
-					<a href="#" class="btn green btn_ask">поддержка 24/7</a>
-					<div class="politic">					
-						<a href="#">Ваши данные не будут переданы третьим лицам</a>
-					</div>
-				</div>
-			</div>
-			<a class="close"></a>
-		</div>
-		
-		<div class="overlay" id="overlay_ask"></div>
-		<div class="popup popup_ask" id="popup_ask">
-			<div class="popup_in">
-				<div class="h_icon"></div>
-				<div class="h_title">Задать вопрос</div>
-				<div class="h_subtitle">Наш менеджер ответит в течении 10 минут</div>
-				<div class="c_form">
-					<div class="col_2">	
-						<div class="value small">
-							<input type="text" name="name" placeholder="Имя" />
-						</div>
-						<div class="value small">
-							<input type="text" name="name" placeholder="Е-мейл" />
-						</div>
-					</div>
-					<div class="value">
-						<textarea name="text" placeholder="Ваш вопрос..."></textarea>
-					</div>
-				</div>
-				<div class="bts">
-					<a href="#" class="btn green">отправить вопрос</a>
-					<div class="politic">	
-						<a href="#">Ваши данные не будут переданы третьим лицам</a>
-					</div>
-				</div>
-			</div>
-			<a class="close"></a>
-		</div>
-	</div>
-	
-	<script>
-		  window.fbAsyncInit = function() {
-			FB.init({
-			  appId      : '1636856669907460',
-			  xfbml      : true,
-			  version    : 'v2.6'
-			});
-		  };
-
-		  (function(d, s, id){
-			 var js, fjs = d.getElementsByTagName(s)[0];
-			 if (d.getElementById(id)) {return;}
-			 js = d.createElement(s); js.id = id;
-			 js.src = "http://connect.facebook.net/en_US/sdk.js";
-			 fjs.parentNode.insertBefore(js, fjs);
-		   }(document, 'script', 'facebook-jssdk'));
-	</script>
-	
 	<!-- BEGIN JQUERY -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBoDhTpnpCOFitNC83T97Bh-W051-5cTx0"></script>
 	<script type="text/javascript" src="js/swiper.min.js"></script>
 	<script type="text/javascript" src="js/jquery.maskedinput.js"></script>
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
@@ -1235,7 +1184,6 @@
 	<script type="text/javascript" src="js/jquery.formstyler.js"></script>
 	<script src="js/magnific-popup.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
-	<script type="text/javascript" src="js/contacts.js"></script>
 	<!-- END JQUERY -->
 </body>
 </html>

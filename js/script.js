@@ -74,32 +74,37 @@ $(function() {
 	
 	/*chose flat*/
 	$('.choose_btn').click(function(){
-		$('html, body').animate({scrollTop: $('#s-flat').offset().top-72}, 500);
-		$('.b-area-label-4').click();
+		location.href = 'plans.html';
+		return false;
+	});
+	$('.wrapper_main .area_menu a').click(function(){
+		location.href = 'plans.html';
 		return false;
 	});
 	$('.area_menu a').click(function(e){
 		e.preventDefault();
 		if($(this).hasClass('active')){
 			var f_tab = $(this).attr('href');
-			if(f_tab=='#f-sections'){
-				location.href = 'index.html#sections';
-			} else {
-				$('.flats .area').removeClass('active');
-				$(f_tab).addClass('active');
-				if(f_tab=='#f-detail'){
-					var f_subarea = $(this).attr('data-subarea-link');
-					if(f_subarea=='p'){
-						$('.area_flats').attr('data-subarea', 'p');
-					} else {
-						$('.area_flats').attr('data-subarea', 'o');
-					}
+			$('.flats .area').removeClass('active');
+			$(f_tab).addClass('active');
+			if(f_tab=='#f-detail'){
+				var f_subarea = $(this).attr('data-subarea-link');
+				if(f_subarea=='p'){
+					$('.area_flats').attr('data-subarea', 'p');
+				} else {
+					$('.area_flats').attr('data-subarea', 'o');
 				}
-				$(this).nextAll('.active').removeClass('active');
-				$(this).addClass('active');
-				window.location.hash = $(this).attr('data-hash');
 			}
+			$(this).nextAll('.active').removeClass('active');
+			$(this).addClass('active');
+			window.location.hash = $(this).attr('data-hash');
+			$('.flats .h-group').removeClass('active');
+			$('#h-'+$(this).attr('data-hash')).addClass('active');
 		}
+		return false;
+	});
+	$('.area .back_to_main').click(function(){
+		location.href = 'index.html#sections';
 		return false;
 	});
 	$('.area .back').click(function(){
@@ -137,9 +142,25 @@ $(function() {
 		$('.b-area-tooltip').css({'left': e.pageX-$(this).offset().left+10+'px', 'top': e.pageY-$(this).offset().top+'px'});
 	});
 	/*plans*/
-	$('.b-area-label').click(function(){
+	$('.wrapper_main .b-area-label').click(function(){
 		if(!$(this).hasClass('sold')) {
 			location.href = 'plans.html';
+		}
+		return false;
+	});
+	$('.b-area-label').click(function(){
+		if(!$(this).hasClass('sold')) {
+			$('.flats .area').removeClass('active');
+			$('#f-plans').addClass('active');
+			
+			$('.area_menu a').removeClass('active');
+			$('.area_menu a').eq(0).addClass('active');
+			$('.area_menu a').eq(1).addClass('active');
+			
+			var section_id = $(this).attr('data-section-id');
+			$('.area_plans .plans').removeClass('active');
+			$('.area_plans .plans_'+section_id).addClass('active;');
+			window.location.hash = 'plans';
 		}
 		return false;
 	});
@@ -169,6 +190,8 @@ $(function() {
 		$('.area_flats .flat_detail_'+flat_id).addClass('active');
 		$('.flats-navs .num strong').text($('.area_flats .flat_detail_'+flat_id).index()+1);
 		window.location.hash = 'detail-plan';
+		$('.flats .h-group').removeClass('active');
+		$('#h-detail-plan').addClass('active');
 	});
 	$('.flats-navs .prev').click(function(){
 		var prev_flat = $('.area_flats .flat_detail.active').prev();
@@ -226,6 +249,8 @@ $(function() {
 		$('.back_to_plans').text('Назад к выбору квартиры');
 		$('.back_to_plans').attr('data-back-subarea', 'o');
 		window.location.hash = 'order';
+		$('.flats .h-group').removeClass('active');
+		$('#h-order').addClass('active');
 		return false;
 	});
 	$('.plan_detail .btn').hover(
@@ -263,11 +288,19 @@ $(function() {
 	/*styled select*/
 	$('select.nice').styler({});
 	
+	var leftPopup = '-720px';
+	var leftMenuPopup = '-500px';
+	
+	if(width<720){
+		var leftPopup = '-320px';
+		var leftMenuPopup = '-320px';
+	}
+	
 	//menu popup
 	$('.menu-btn').click(function(){
 		if($(this).hasClass('active')) {
 			$(this).removeClass('active');
-			$('#popup_menu').animate({'right': '-500px'}, 500, function(){
+			$('#popup_menu').animate({'right': leftMenuPopup}, 500, function(){
 				$('#overlay_menu').fadeOut(250, function(){
 					$('body').removeClass('p_open');
 				});
@@ -283,7 +316,7 @@ $(function() {
 	});
 	$('#overlay_menu, #popup_menu .close').click(function(){
 		$('.menu-btn').removeClass('active');
-		$('#popup_menu').animate({'right': '-500px'}, 500, function(){
+		$('#popup_menu').animate({'right': leftMenuPopup}, 500, function(){
 			$('#overlay_menu').fadeOut(250, function(){
 				$('body').removeClass('p_open');
 			});
@@ -295,7 +328,7 @@ $(function() {
 		$('html, body').animate({scrollTop: scr_top}, 500);
 		setTimeout(function(){
 			$('.menu-btn').removeClass('active');
-			$('#popup_menu').animate({'right': '-500px'}, 500, function(){
+			$('#popup_menu').animate({'right': leftMenuPopup}, 500, function(){
 				$('#overlay_menu').fadeOut(250, function(){
 					$('body').removeClass('p_open');
 				});
@@ -313,7 +346,7 @@ $(function() {
 		return false;
 	});
 	$('#overlay_map, #popup_map .close').click(function(){
-		$('#popup_map').animate({'right': '-720px'}, 500, function(){
+		$('#popup_map').animate({'right': leftPopup}, 500, function(){
 			$('#overlay_map').fadeOut(250, function(){
 				$('body').removeClass('p_open');
 			});
@@ -323,12 +356,12 @@ $(function() {
 	//ask popup
 	$('.btn_ask').click(function(){
 		$('menu-btn').removeClass('active');
-		$('#popup_menu').animate({'right': '-500px'}, 500, function(){
+		$('#popup_menu').animate({'right': leftMenuPopup}, 500, function(){
 			$('#overlay_menu').fadeOut(250, function(){
 				$('body').removeClass('p_open');
 			});
 		});
-		$('#popup_map').animate({'right': '-720px'}, 500, function(){
+		$('#popup_map').animate({'right': leftPopup}, 500, function(){
 			$('#overlay_map').fadeOut(250, function(){
 				$('body').removeClass('p_open');
 			});
@@ -341,7 +374,7 @@ $(function() {
 		return false;
 	});
 	$('#overlay_ask, #popup_ask .close').click(function(){
-		$('#popup_ask').animate({'right': '-700px'}, 500, function(){
+		$('#popup_ask').animate({'right': leftPopup}, 500, function(){
 			$('#overlay_ask').fadeOut(250, function(){
 				$('body').removeClass('p_open');
 			});

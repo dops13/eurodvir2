@@ -152,6 +152,9 @@ a {
 
 input, textarea, button {
 	 font-family: @base_font_family;
+	 -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
 }
 
 ul {
@@ -383,6 +386,12 @@ header {
 	 position: relative;
 	 overflow: hidden;
 	 padding-top: 70px;
+	 &.wrapper_flats {
+		 padding-top: 10px;
+		 .section.flats .f-group {
+			 padding-bottom: 10px;
+		 }
+	 }
 }
 
 .wrapper_inner {
@@ -663,7 +672,7 @@ header {
 	 .about_slider {
 		 position: relative;
 		 padding-left: 215px;
-		 padding-right: 25px;
+		 padding-right: 0px;
 		 padding-top: 90px;
 		 text-align: left;
 		 .swiper-slide {
@@ -688,7 +697,7 @@ header {
 		 }
 		 .desc {
 			 margin-left: 285px;
-			 padding-bottom: 80px;
+			 padding-bottom: 0px;
 			 h3 {
 				 margin-top: 0;
 				 margin-bottom: 20px;
@@ -846,7 +855,11 @@ header {
 						 width: 53px;
 						 height: 44px;
 						 background: url(../images/ye_p1.png) no-repeat;
-						 z-index: -1;
+						 z-index: 1;
+					 }
+					 span {
+						 position: relative;
+						 z-index: 2;
 					 }
 				 }
 				 p {
@@ -888,6 +901,12 @@ header {
 	 z-index: 50;
 	 .f-group {
 		 padding-bottom: 30px;
+	 }
+	 .h-group {
+		 display: none;
+		 &.active {
+			 display: block;
+		 }
 	 }
 	 .title {
 	 
@@ -2326,8 +2345,9 @@ header {
 	 
 	 .back {
 		 position: absolute;
-		 top: -98px;
-		 left: 50px;
+		 top: -118px;
+		 left: 50%;
+		 margin-left: -550px;
 		 font-size: 16px;
 		 font-weight: 400;
 		 white-space: nowrap;
@@ -2346,9 +2366,6 @@ header {
 	 
 	 &.flats_one {
 		 padding: 0;
-		 .area_menu {
-			 display: none;
-		 }
 		 .areas {
 			 background: #fff;
 		 }
@@ -3075,10 +3092,10 @@ header {
 		 .politic {
 			 display: block;
 			 font-size: 13px;
-			 padding: 10px 0 0 0;
+			 padding: 12px 0 0 0;
 			 a {
 				 color: @base_text_color;
-				 text-decoration: underline;
+				 text-decoration: none;
 				 &:hover {
 					 color: @base_text_color;
 					 text-decoration: none;
@@ -3171,8 +3188,10 @@ header {
 
 .popup_ask {
 	 .h_icon {
-		 height: 140px;
+		 margin: 20px 0 0 0;
+		 height: 136px;
 		 background: url(../images/ask_bg.png) no-repeat top center;
+		 background-size: auto 100%;
 	 }
 	 .h_title {
 		 font-size: 45px;
@@ -3203,7 +3222,7 @@ header {
 			 }
 			 textarea {
 				 padding: 26px;
-				 height: 200px;
+				 height: 176px;
 			 }
 		 }
 		 .col_2 {
