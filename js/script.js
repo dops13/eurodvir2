@@ -74,11 +74,8 @@ $(function() {
 	
 	/*chose flat*/
 	$('.choose_btn').click(function(){
-		location.href = 'plans.html';
-		return false;
-	});
-	$('.wrapper_main .area_menu a').click(function(){
-		location.href = 'plans.html';
+		$('html, body').animate({scrollTop: $('#s-flat').offset().top-72}, 500);
+		$('.b-area-label-4').click();
 		return false;
 	});
 	$('.area_menu a').click(function(e){
@@ -97,14 +94,10 @@ $(function() {
 			}
 			$(this).nextAll('.active').removeClass('active');
 			$(this).addClass('active');
-			window.location.hash = $(this).attr('data-hash');
+			//window.location.hash = $(this).attr('data-hash');
 			$('.flats .h-group').removeClass('active');
 			$('#h-'+$(this).attr('data-hash')).addClass('active');
 		}
-		return false;
-	});
-	$('.area .back_to_main').click(function(){
-		location.href = 'index.html#sections';
 		return false;
 	});
 	$('.area .back').click(function(){
@@ -142,12 +135,6 @@ $(function() {
 		$('.b-area-tooltip').css({'left': e.pageX-$(this).offset().left+10+'px', 'top': e.pageY-$(this).offset().top+'px'});
 	});
 	/*plans*/
-	$('.wrapper_main .b-area-label').click(function(){
-		if(!$(this).hasClass('sold')) {
-			location.href = 'plans.html';
-		}
-		return false;
-	});
 	$('.b-area-label').click(function(){
 		if(!$(this).hasClass('sold')) {
 			$('.flats .area').removeClass('active');
@@ -160,7 +147,7 @@ $(function() {
 			var section_id = $(this).attr('data-section-id');
 			$('.area_plans .plans').removeClass('active');
 			$('.area_plans .plans_'+section_id).addClass('active;');
-			window.location.hash = 'plans';
+			//window.location.hash = 'plans';
 		}
 		return false;
 	});
@@ -189,7 +176,7 @@ $(function() {
 		$('.area_flats .flat_detail').removeClass('active');
 		$('.area_flats .flat_detail_'+flat_id).addClass('active');
 		$('.flats-navs .num strong').text($('.area_flats .flat_detail_'+flat_id).index()+1);
-		window.location.hash = 'detail-plan';
+		//window.location.hash = 'detail-plan';
 		$('.flats .h-group').removeClass('active');
 		$('#h-detail-plan').addClass('active');
 	});
@@ -248,7 +235,7 @@ $(function() {
 		$('.area_flats').attr('data-subarea', 'o');
 		$('.back_to_plans').text('Назад к выбору квартиры');
 		$('.back_to_plans').attr('data-back-subarea', 'o');
-		window.location.hash = 'order';
+		//window.location.hash = 'order';
 		$('.flats .h-group').removeClass('active');
 		$('#h-order').addClass('active');
 		return false;
@@ -396,7 +383,7 @@ $(function() {
 	});
 	
 	//contact validate
-	$("#cform").validate({
+	$("#ask_form").validate({
 		rules: {
 			name: {
 				required: true
@@ -411,13 +398,48 @@ $(function() {
 		},
 		success: "valid",
 		submitHandler: function() {
-			$('#popup_thanks').addClass('open');
-			setTimeout(function(){
-				$('#popup_thanks .close').click();
-			}, 4000);
 			
-			return false;
 		}
+	});
+	
+	//order validate
+	$(".order_form .btn").click(function(){
+		$(this).closest('form').submit();
+		return false;
+	});
+	$(".order_form").each(function(){
+		var form = $(this);
+		form.validate({
+			rules: {
+				name: {
+					required: true
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				phone: {
+					required: true
+				}
+			},
+			success: "valid",
+			submitHandler: function() {
+				form.fadeOut(250);
+				var htitle = form.closest('.flat_detail').find('.h_title').text();
+				var hsubtitle = form.closest('.flat_detail').find('.h_subtitle').text();
+				form.closest('.flat_detail').find('.h_title').text('Спасибо, ваша заявка отправлена.');
+				form.closest('.flat_detail').find('.h_subtitle').text('Мы свяжемся с вами в ближайшее время.');
+				setTimeout(function(){
+					$('.area_menu a:first').click();
+					form.closest('.flat_detail').find('.h_title').text(htitle);
+					form.closest('.flat_detail').find('.h_subtitle').text(hsubtitle);
+					form.fadeIn(500);
+					form.find('input').val('');
+				}, 4000);
+				
+				return false;
+			}
+		});
 	});
 	
 	/*menu filled*/

@@ -59,12 +59,11 @@
 	 .section.offices .item .name span {display: block;}
 	 
 	 /*flats*/
-	 .section.flats .areas {background: #fff;}
+	 .section.flats .areas {height: auto; background: #fff;}
 	 .section.flats .area_plans .plans {    transform: scale(0.7); left: 50%; margin-left: -519px;}
 	 .section.flats .back {top: 52px; padding-left: 40px; margin-left: -344px;}
 	 .section.flats .back::after {position: absolute; left: 0px; top: 2px; margin-left: 0px;}
-	 .wrapper_flats .section.flats .areas {height: auto;}
-	 .wrapper_flats .section.flats .area_sections {padding-bottom: 30px; box-sizing: initial;}
+	 .section.flats .area_sections {padding-bottom: 30px; box-sizing: initial;}
 	 .section.flats .area_sections .back {top: auto; right: auto; bottom: 0px; left: 50%; margin-left: -102px;}
 	 .section.flats .area_plans .plans_floor {float: right;}
 	 
@@ -102,8 +101,9 @@
 	 header .choose-btn a::before {transform: scale(0.8); margin-left: -5px;}
 	 header .choose-btn .adr {display: none;}
 	 header .choose-btn a::before {margin-top: -26px;}
-	 header .tel {font-size: 0px; margin: 0 5px 0 0; height: 70px; line-height: 70px;}
+	 header .tel {font-size: 12px; letter-spacing: 0px; margin: 17px 5px 0 0; line-height: normal;}
 	 header .tel strong {font-size: 14px;}
+	 header .tel::before {display: none;}
 	 header .menu-btn {transform: scale(0.8); margin-right: -5px;}
 	 
 	 /*main slider*/
@@ -152,7 +152,7 @@
 
 	 /*flats*/
 	 .section.flats {padding-top: 70px;}
-	 .section.flats .area_menu {margin-bottom: 20px;}
+	 .section.flats .area_menu {margin-bottom: 60px;}
 	 .section.flats .area_menu a {width: 70px;}
 	 .section.flats .area_menu a .num {width: 48px; height: 48px; line-height: 44px; font-size: 20px; margin-bottom: 7px;}
 	 .section.flats .area_menu a .label {font-size: 12px;}
@@ -175,7 +175,7 @@
 	 .section.flats .area_plans .plans_floor .next {}
 	 .section.flats .area_plans .plans_floor .label {bottom: 45px;}
 	 .section.flats .area_plans .plans_floor .num {padding: 20px 0 40px 0;}
-	 .section.flats .back {top: auto; right: auto; bottom: 0px; left: 50%; margin-left: -102px;}
+	 .section.flats .back {top: -35px; right: auto; bottom: auto; left: 50%; margin-left: -102px;}
 	 .section.flats .area_plans .plans_bts .btn {transform: rotate(90deg) scale(1.8);}
 	 
 	 .section.flats .area_flats .flat_info .item {display: none;}
@@ -207,11 +207,8 @@
 	 .section.flats .area_sections .area_map .b-area-label {transform: scale(2);}
 	 .section.flats .area_sections .area_map .b-area-tooltip {display: none!important;}
 	 
-	 .wrapper.wrapper_flats .section.flats .f-group {padding-bottom: 10px;}
-	 .section.flats .area_sections .back {top: auto; right: auto; bottom: 0px; left: 50%; margin-left: -102px;}
+	 .section.flats .f-group {padding-bottom: 10px;}
 	 .section.flats .area_flats .plan_bts .btn {display: none;}
-	 
-	 .wrapper_flats .section.flats .area_sections, .wrapper_flats .section.flats .area_flats {padding-bottom: 40px; box-sizing: initial;}
 	 
 	 /*maps*/
 	 .section.map {padding-top: 70px;}

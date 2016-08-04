@@ -327,19 +327,30 @@ header {
 		 .transition(0.5s ease 0s);
 		 float: right;
 		 margin-top: 13px;
-		 margin-right: 20px;
+		 margin-right: 17px;
 		 cursor: pointer;
 		 font-size: 14px;
-		 letter-spacing: 0;
 		 position: relative;
 		 z-index: 2;
+		 padding-left: 34px;
+		 letter-spacing: 0.04em;
 		 strong {
 			 display: block;
 			 font-weight: bold;
 			 font-size: 18px;
-			 span {
-				 color: @base_link_color;
-			 }
+			 letter-spacing: 0;
+		 }
+		 &::before {
+			 content: '';
+			 position: absolute;
+			 top: 50%;
+			 left: 0;
+			 width: 22px;
+			 height: 33px;
+			 margin: -16.5px 0 0 0;
+			 background: url(../images/svg/phone.svg) no-repeat 0 0;
+			 background-size: 100% 100%;
+			 .transform(scale(1.2) rotate(20deg));
 		 }
 	 }
 	 .bts {
@@ -386,12 +397,6 @@ header {
 	 position: relative;
 	 overflow: hidden;
 	 padding-top: 70px;
-	 &.wrapper_flats {
-		 padding-top: 10px;
-		 .section.flats .f-group {
-			 padding-bottom: 10px;
-		 }
-	 }
 }
 
 .wrapper_inner {
@@ -2288,6 +2293,12 @@ header {
 					 &:focus {
 						 border-bottom-color: @base_link_color;
 					 }
+					 &.error {
+						 border-bottom-color: red;
+					 }
+				 }
+				 label.error {
+					 display: none!important;
 				 }
 			 }
 			 .bts {
@@ -3205,6 +3216,8 @@ header {
 	 }
 	 .c_form {
 		 padding: 0 31px;
+		 width: 100%;
+		 overflow: hidden;
 		 .value {
 			 margin: 0 0 19px 0;
 			 input, textarea {
@@ -3219,13 +3232,20 @@ header {
 				 &:focus {
 					 border-color: @base_link_color;
 				 }
+				 &.error {
+					 border-color: red;
+				 }
 			 }
 			 textarea {
 				 padding: 26px;
 				 height: 176px;
 			 }
+			 label.error {
+				 display: none!important;
+			 }
 		 }
 		 .col_2 {
+			 width: 110%;
 			 &::after {
 				 content: '';
 				 clear: both;
@@ -3233,11 +3253,8 @@ header {
 			 }
 			 .value {
 				 float: left;
-				 width: 48%;
-				 &:last-child {
-					 float: right;
-					 width: 48%;
-				 }
+				 width: 169px;
+				 margin-right: 20px;
 			 }
 		 }
 	 }
