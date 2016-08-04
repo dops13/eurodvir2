@@ -135,6 +135,12 @@ $(function() {
 		$('.b-area-tooltip').css({'left': e.pageX-$(this).offset().left+10+'px', 'top': e.pageY-$(this).offset().top+'px'});
 	});
 	/*plans*/
+	var flat_status;
+	var section_id;
+	
+	$.getJSON("js/status.json", function(data) {
+		flat_status = data;
+	});
 	$('.b-area-label').click(function(){
 		if(!$(this).hasClass('sold')) {
 			$('.flats .area').removeClass('active');
@@ -144,21 +150,26 @@ $(function() {
 			$('.area_menu a').eq(0).addClass('active');
 			$('.area_menu a').eq(1).addClass('active');
 			
-			var section_id = $(this).attr('data-section-id');
+			section_id = $(this).attr('data-section-id');
 			$('.area_plans .plans').removeClass('active');
 			$('.area_plans .plans_'+section_id).addClass('active;');
 			//window.location.hash = 'plans';
+			
+			$('.area_plans .plans_'+section_id+' .btn').each(function(i){
+				var label = flat_status[section_id][0].status[i];
+				$(this).attr('data-status', label);
+				if(label=='0') {
+					$(this).append('<i>забронировано</i>')
+				}
+				if(label=='-1') {
+					$(this).append('<i>продано</i>')
+				}
+			});
 		}
 		return false;
 	});
 	$('.area_map area').click(function(){
 		$('.b-area-label-'+$(this).attr('data-section-id')).click();
-		return false;
-	});
-	$('.floor_items a').click(function(){
-		$(this).parent().find('a').removeClass('active');
-		$(this).addClass('active');
-		$('.floor_info .floor_number').text($(this).text());
 		return false;
 	});
 	$('.plans .btn').click(function(){
@@ -208,20 +219,29 @@ $(function() {
 		}
 		return false;
 	});
-	$('.plans_floor .prev').click(function(){
+	$('.plans_floor a').click(function(){
 		var floor_num = parseInt($('.plans_floor_num').text());
-		if(floor_num>1){
-			floor_num--;
+		if($(this).hasClass('.prev')){
+			if(floor_num>1){
+				floor_num--;
+			}
+		} else {
+			if(floor_num<10){
+				floor_num++;
+			}
 		}
 		$('.plans_floor_num').text(floor_num);
-		return false;
-	});
-	$('.plans_floor .next').click(function(){
-		var floor_num = parseInt($('.plans_floor_num').text());
-		if(floor_num<10){
-			floor_num++;
-		}
-		$('.plans_floor_num').text(floor_num);
+		
+		$('.area_plans .plans_'+section_id+' .btn').each(function(i){
+			var label = flat_status[section_id][floor_num-1].status[i];
+			$(this).attr('data-status', label);
+			if(label=='0') {
+				$(this).append('<i>забронировано</i>')
+			}
+			if(label=='-1') {
+				$(this).append('<i>продано</i>')
+			}
+		});
 		return false;
 	});
 	
@@ -398,48 +418,55 @@ $(function() {
 		},
 		success: "valid",
 		submitHandler: function() {
-			
+			$('#ask_form').fadeOut(250);
+			var ask_title = $('#popup_ask .h_title').text();
+			var ask_subtitle = $('#popup_ask .h_subtitle').text();
+			$('#popup_ask .h_title').text('Спасибо, ваша заявка отправлена.');
+			$('#popup_ask .h_subtitle').text('Мы свяжемся с вами в ближайшее время.');
+			setTimeout(function(){
+				$('#ask_form').fadeIn(250);
+				$('#ask_form input, #ask_form textarea').val('');
+				$('#popup_ask .close').click();
+			}, 4000);
 		}
 	});
 	
 	//order validate
-	$(".order_form .btn").click(function(){
+	$("#order_form .btn").click(function(){
 		$(this).closest('form').submit();
 		return false;
 	});
-	$(".order_form").each(function(){
-		var form = $(this);
-		form.validate({
-			rules: {
-				name: {
-					required: true
-				},
-				email: {
-					required: true,
-					email: true
-				},
-				phone: {
-					required: true
-				}
+	var order_form = $('#order_form');
+	order_form.validate({
+		rules: {
+			name: {
+				required: true
 			},
-			success: "valid",
-			submitHandler: function() {
-				form.fadeOut(250);
-				var htitle = form.closest('.flat_detail').find('.h_title').text();
-				var hsubtitle = form.closest('.flat_detail').find('.h_subtitle').text();
-				form.closest('.flat_detail').find('.h_title').text('Спасибо, ваша заявка отправлена.');
-				form.closest('.flat_detail').find('.h_subtitle').text('Мы свяжемся с вами в ближайшее время.');
-				setTimeout(function(){
-					$('.area_menu a:first').click();
-					form.closest('.flat_detail').find('.h_title').text(htitle);
-					form.closest('.flat_detail').find('.h_subtitle').text(hsubtitle);
-					form.fadeIn(500);
-					form.find('input').val('');
-				}, 4000);
-				
-				return false;
+			email: {
+				required: true,
+				email: true
+			},
+			phone: {
+				required: true
 			}
-		});
+		},
+		success: "valid",
+		submitHandler: function() {
+			order_form.fadeOut(250);
+			var htitle = $('.flat_detail.active').find('.h_title').text();
+			var hsubtitle = $('.flat_detail.active').find('.h_subtitle').text();
+			$('.flat_detail.active').find('.h_title').text('Спасибо, ваша заявка отправлена.');
+			$('.flat_detail.active').find('.h_subtitle').text('Мы свяжемся с вами в ближайшее время.');
+			setTimeout(function(){
+				$('.area_menu a:first').click();
+				$('.flat_detail.active').find('.h_title').text(htitle);
+				$('.flat_detail.active').find('.h_subtitle').text(hsubtitle);
+				order_form.fadeIn(500);
+				order_form.find('input').val('');
+			}, 4000);
+			
+			return false;
+		}
 	});
 	
 	/*menu filled*/
@@ -487,7 +514,7 @@ $(function() {
 		});
 	}
 	
-		/* Gallery */
+	/* Gallery */
 	$('.album').magnificPopup({
 		delegate: 'a',
 		type: 'image',
