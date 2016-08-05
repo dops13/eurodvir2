@@ -237,6 +237,7 @@
 	 
 	 /*popup*/
 	 .popup_menu, .popup {width: 262px;}
+	 .popup_menu .logo {display: block;}
 	 .popup_menu li {height: 50px; font-size: 16px;}
 	 .popup_menu li a {line-height: 50px;}
 	 .popup .bts {bottom: 0px; position: relative;}

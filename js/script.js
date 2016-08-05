@@ -141,7 +141,7 @@ $(function() {
 	$.getJSON("js/status.json", function(data) {
 		flat_status = data;
 	});
-	$('.b-area-label').click(function(){
+	$('.b-area-label').on('click touchstart', function () {
 		if(!$(this).hasClass('sold')) {
 			$('.flats .area').removeClass('active');
 			$('#f-plans').addClass('active');
@@ -168,7 +168,7 @@ $(function() {
 		}
 		return false;
 	});
-	$('.area_map area').click(function(){
+	$('.area_map area').on('click touchstart', function () {
 		$('.b-area-label-'+$(this).attr('data-section-id')).click();
 		return false;
 	});
@@ -418,15 +418,14 @@ $(function() {
 		},
 		success: "valid",
 		submitHandler: function() {
-			$('#ask_form').fadeOut(250);
-			var ask_title = $('#popup_ask .h_title').text();
-			var ask_subtitle = $('#popup_ask .h_subtitle').text();
-			$('#popup_ask .h_title').text('Спасибо, ваша заявка отправлена.');
-			$('#popup_ask .h_subtitle').text('Мы свяжемся с вами в ближайшее время.');
+			$('.pbox_ask').fadeOut();
+			$('.pbox_thank').fadeIn(250);
+			
 			setTimeout(function(){
-				$('#ask_form').fadeIn(250);
 				$('#ask_form input, #ask_form textarea').val('');
 				$('#popup_ask .close').click();
+				$('.pbox_ask').fadeIn(250);
+				$('.pbox_thank').fadeOut();
 			}, 4000);
 		}
 	});
