@@ -221,18 +221,21 @@ $(function() {
 	});
 	$('.plans_floor a').click(function(){
 		var floor_num = parseInt($('.plans_floor_num').text());
-		if($(this).hasClass('.prev')){
-			if(floor_num>1){
-				floor_num--;
-			}
-		} else {
-			if(floor_num<10){
-				floor_num++;
-			}
+		var price = '7 500';
+
+		// debugger;
+		floor_num = $(this).hasClass('prev') ? floor_num - 1 : floor_num + 1;
+
+		floor_num = ((floor_num + 9) % 10) + 1;
+
+		if(floor_num > 1){
+			price = '7 900';
 		}
+
 		$('.plans_floor_num').text(floor_num);
-		
-		$('.area_plans .plans_'+section_id+' .btn').each(function(i){
+		$('.plans_txt > span').text(price);
+		// debugger;
+		$('.area_plans .plans_' + section_id + ' .btn').each(function(i){
 			var label = flat_status[section_id][floor_num-1].status[i];
 			$(this).attr('data-status', label);
 			if(label=='0') {
@@ -247,11 +250,12 @@ $(function() {
 	
 	/*plan detail*/
 	$('#plan_info .btn').click(function(){
-		$('.area_menu a').removeClass('active');
-		$('.area_menu a').eq(0).addClass('active');
-		$('.area_menu a').eq(1).addClass('active');
-		$('.area_menu a').eq(2).addClass('active');
-		$('.area_menu a').eq(3).addClass('active');
+		$el = $('.area_menu a')
+		$el.removeClass('active');
+		$el.eq(0).addClass('active');
+		$el.eq(1).addClass('active');
+		$el.eq(2).addClass('active');
+		$el.eq(3).addClass('active');
 		$('.area_flats').attr('data-subarea', 'o');
 		$('.back_to_plans').text('Назад к выбору квартиры');
 		$('.back_to_plans').attr('data-back-subarea', 'o');
