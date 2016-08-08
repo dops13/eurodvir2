@@ -51,7 +51,18 @@
 	 .section.map .infra_menu .item {margin-bottom: 30px;}
 	 
 	 /*news*/
-	 .section.news {display: none;}
+	 .section.news {}
+	 .section.news .wrap {padding: 0 0 20px 0;}
+	 .section.news .lt {width: 300px;}
+	 .section.news .rt {width: 370px;}
+	 .section.news .preview {float: none; width: 100%;}
+	 .section.news .preview a img {height: 278px;}
+	 .section.news .gallery {width: 390px; float: left;}
+	 .section.news .gallery a {display: inline-block; width: 178px; margin: 0 12px 12px 0; overflow: hidden;}
+	 .section.news .gallery a img {height: 116px;}
+	 .section.news .bts .btn {width: 178px;}
+	 
+	 /*offices*/
 	 .section.offices .item.lt .image {padding: 0;}
 	 .section.offices .item {padding: 0 25px;}
 	 .section.offices .item .image {text-align: center;}
@@ -219,6 +230,15 @@
 	 .section.map .infra_menu .item:nth-child(7) {display: none;}
 	 .section.map .infra_tabs {height: 306px;}
 	 .section.map .map {height: 306px;}
+	 
+	 /*news*/
+	 .section.news .lt {margin-bottom: 20px;}
+	 .section.news .lt, .section.news .rt {width: auto; float: none;}
+	 .section.news .gallery {width: 300px;}
+	 .section.news .gallery a {width: 134px;}
+	 .section.news .gallery a img {height: 96px;}
+	 .section.news .bts {text-align: center;}
+	 .section.news .bts .btn {display: inline-block; margin: 0 0 20px 0; float: none;}
 	 
 	 /*offices*/
 	 .section.offices {padding-top: 70px;}

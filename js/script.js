@@ -541,4 +541,8 @@ $(function() {
 	
 	// Phone Mask
 	$('input[name="phone"]').mask("+99(999) 999-99-99");
+	
+	$('input, textarea').each(function(){
+		$(this).attr('autocomplete', 'off');
+	});
 });
