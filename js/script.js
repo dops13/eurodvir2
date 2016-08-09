@@ -307,24 +307,24 @@ $(function() {
 	$('.menu-btn').click(function(){
 		if($(this).hasClass('active')) {
 			$(this).removeClass('active');
-			$('#popup_menu').animate({'right': leftMenuPopup}, 500, function(){
-				$('#overlay_menu').fadeOut(250, function(){
+			$('#popup_menu').animate({'right': leftMenuPopup}, 150, function(){
+				$('#overlay_menu').fadeOut(100, function(){
 					$('body').removeClass('p_open');
 				});
 			});
 		} else {
 			$(this).addClass('active');
 			$('body').addClass('p_open');
-			$('#overlay_menu').fadeIn(250, function(){
-				$('#popup_menu').animate({'right': '0px'}, 500);
+			$('#overlay_menu').fadeIn(100, function(){
+				$('#popup_menu').animate({'right': '0px'}, 150);
 			});
 		}
 		return false;
 	});
 	$('#overlay_menu, #popup_menu .close').click(function(){
 		$('.menu-btn').removeClass('active');
-		$('#popup_menu').animate({'right': leftMenuPopup}, 500, function(){
-			$('#overlay_menu').fadeOut(250, function(){
+		$('#popup_menu').animate({'right': leftMenuPopup}, 150, function(){
+			$('#overlay_menu').fadeOut(100, function(){
 				$('body').removeClass('p_open');
 			});
 		});
@@ -335,8 +335,8 @@ $(function() {
 		$('html, body').animate({scrollTop: scr_top}, 500);
 		setTimeout(function(){
 			$('.menu-btn').removeClass('active');
-			$('#popup_menu').animate({'right': leftMenuPopup}, 500, function(){
-				$('#overlay_menu').fadeOut(250, function(){
+			$('#popup_menu').animate({'right': leftMenuPopup}, 150, function(){
+				$('#overlay_menu').fadeOut(100, function(){
 					$('body').removeClass('p_open');
 				});
 			});
@@ -347,14 +347,14 @@ $(function() {
 	//map popup
 	$('.map-btn').click(function(){
 		$('body').addClass('p_open');
-		$('#overlay_map').fadeIn(250, function(){
-			$('#popup_map').animate({'right': '0px'}, 500);
+		$('#overlay_map').fadeIn(100, function(){
+			$('#popup_map').animate({'right': '0px'}, 150);
 		});
 		return false;
 	});
 	$('#overlay_map, #popup_map .close').click(function(){
-		$('#popup_map').animate({'right': leftPopup}, 500, function(){
-			$('#overlay_map').fadeOut(250, function(){
+		$('#popup_map').animate({'right': leftPopup}, 150, function(){
+			$('#overlay_map').fadeOut(100, function(){
 				$('body').removeClass('p_open');
 			});
 		});
@@ -363,26 +363,26 @@ $(function() {
 	//ask popup
 	$('.btn_ask').click(function(){
 		$('menu-btn').removeClass('active');
-		$('#popup_menu').animate({'right': leftMenuPopup}, 500, function(){
-			$('#overlay_menu').fadeOut(250, function(){
+		$('#popup_menu').animate({'right': leftMenuPopup}, 150, function(){
+			$('#overlay_menu').fadeOut(100, function(){
 				$('body').removeClass('p_open');
 			});
 		});
-		$('#popup_map').animate({'right': leftPopup}, 500, function(){
-			$('#overlay_map').fadeOut(250, function(){
+		$('#popup_map').animate({'right': leftPopup}, 150, function(){
+			$('#overlay_map').fadeOut(100, function(){
 				$('body').removeClass('p_open');
 			});
 		});
 		
 		$('body').addClass('p_open');
-		$('#overlay_ask').fadeIn(250, function(){
-			$('#popup_ask').animate({'right': '0px'}, 500);
+		$('#overlay_ask').fadeIn(100, function(){
+			$('#popup_ask').animate({'right': '0px'}, 150);
 		});
 		return false;
 	});
 	$('#overlay_ask, #popup_ask .close').click(function(){
-		$('#popup_ask').animate({'right': leftPopup}, 500, function(){
-			$('#overlay_ask').fadeOut(250, function(){
+		$('#popup_ask').animate({'right': leftPopup}, 150, function(){
+			$('#overlay_ask').fadeOut(100, function(){
 				$('body').removeClass('p_open');
 			});
 		});
@@ -392,11 +392,11 @@ $(function() {
 	//thanks close popup
 	$('#popup_thanks .close').click(function(){
 		setTimeout(function(){
-			$('#overlay_order').fadeOut(250, function(){
+			$('#overlay_order').fadeOut(100, function(){
 				$('body').removeClass('p_open');
 			});
 			$('.popup-order .fields input, .popup-order .fields textarea').val('');
-		}, 500);
+		}, 150);
 		$('#popup_order').removeClass('open');
 		$('#popup_thanks').removeClass('open');
 		return false;
@@ -545,4 +545,9 @@ $(function() {
 	$('input, textarea').each(function(){
 		$(this).attr('autocomplete', 'off');
 	});
+	
+	/*facebool news*/
+	if(width<1200) {
+		$('.fb-page').attr('data-height', '492');
+	}
 });

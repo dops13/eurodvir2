@@ -103,6 +103,11 @@
 	 .section .title::after, .section .title::before {margin: 17px 12px 0 0;}
 	 .section .title::after {margin: 17px 0 0 12px;}
 	 .section .subtitle {font-size: 13px; margin-bottom: 20px; padding: 0 5%;}
+	 .section.news .title, .section.offices .title {line-height: 36px; padding: 0 30px;}
+	 .section.news .title::before, .section.news .title::after, .section.offices .title::before, .section.offices .title::after {position: absolute; top: 20px;}
+	 .section.news .title::before, .section.offices .title::before {left: 10px;}
+	 .section.news .title::after, .section.offices .title::after {right: 10px;}
+	 
 	 
 	 /*header*/
 	 header {}
@@ -260,7 +265,7 @@
 	 .popup_menu .logo {display: block;}
 	 .popup_menu li {height: 50px; font-size: 16px;}
 	 .popup_menu li a {line-height: 50px;}
-	 .popup .bts {bottom: 0px; position: relative;}
+	 .popup .bts {bottom: 0px;}
 	 .popup .bts .politic {padding: 12px 20px;}
 	 .popup .close {width: 39px; height: 50px; left: -39px; margin-top: -25px;}
 	 .popup .close::before {transform: scale(0.8);}
@@ -274,4 +279,8 @@
 	 .popup_map .map {height: 340px;}
 	 .popup_map .h_subtitle {margin-bottom: 20px; display: none;}
 	 .popup_map .map {margin-bottom: 20px;}
+}
+
+@media screen and (max-height: 542px) {
+	 .popup .bts {position: relative;}
 }
