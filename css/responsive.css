@@ -265,7 +265,7 @@
 	 .popup_menu .logo {display: block;}
 	 .popup_menu li {height: 50px; font-size: 16px;}
 	 .popup_menu li a {line-height: 50px;}
-	 .popup .bts {bottom: 0px;}
+	 .popup .bts {bottom: 0px; min-height: 72px;}
 	 .popup .bts .politic {padding: 12px 20px;}
 	 .popup .close {width: 39px; height: 50px; left: -39px; margin-top: -25px;}
 	 .popup .close::before {transform: scale(0.8);}
